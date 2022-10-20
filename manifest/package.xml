@@ -61,6 +61,7 @@
 	</types>
 	<types>
 		<members>PublicDashboard</members>
+		<members>PublicDashboard/RIAtVZiWqSLuXliLisvfrpMJXqyXYH1</members>
 		<members>PublicDashboard/goxKvCdtghcTRbLoOKKmZZFaRsWQtv</members>
 		<name>Dashboard</name>
 	</types>
@@ -91,19 +92,7 @@
 	</types>
 	<types>
 		<members>Admin</members>
-		<members>Architect</members>
-		<members>Consultant</members>
-		<members>Developer</members>
-		<members>ProjectManager</members>
 		<name>Profile</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>ProfilePasswordPolicy</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>ProfileSessionSetting</name>
 	</types>
 	<types>
 		<members>Opportunity.Create_Opplineitem</members>
@@ -111,6 +100,7 @@
 	</types>
 	<types>
 		<members>unfiled$public</members>
+		<members>unfiled$public/Hours_by_Role_Report_sn4</members>
 		<members>unfiled$public/Project_Info_Tnw</members>
 		<name>Report</name>
 	</types>
