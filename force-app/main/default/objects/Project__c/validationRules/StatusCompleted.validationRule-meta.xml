@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>StatusCompleted</fullName>
-    <active>false</active>
-    <errorConditionFormula>IF(  ISPICKVAL( Status__c , &apos;In Progress&apos;) , OR(ISCHANGED( Account__c ),  ISCHANGED( Amount__c ) , ISCHANGED( EndDate__c ), ISCHANGED( Opportunity__c ), ISCHANGED( ProjectManager__c ), ISCHANGED( SquadLead__c ), ISCHANGED( StartDate__c ), ISCHANGED( Total_Hours__c ), ISCHANGED( OwnerId )), false)</errorConditionFormula>
-    <errorMessage>You can&apos;t change fields when the project is in progress.</errorMessage>
-</ValidationRule>
