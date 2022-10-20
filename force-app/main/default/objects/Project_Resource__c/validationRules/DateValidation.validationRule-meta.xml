@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DateValidation</fullName>
+    <active>true</active>
+    <errorConditionFormula>if( StartDate__c &lt; today(), true,false)</errorConditionFormula>
+    <errorDisplayField>EndDate__c</errorDisplayField>
+    <errorMessage>Start date cannot be inferior to today&apos;s date.</errorMessage>
+</ValidationRule>
