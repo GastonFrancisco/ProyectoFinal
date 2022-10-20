@@ -10,6 +10,7 @@
 	</types>
 	<types>
 		<members>Opportunity.EndDate__c</members>
+		<members>Opportunity.IsClosed__c</members>
 		<members>Opportunity.ProjectManager__c</members>
 		<members>Opportunity.StartDate__c</members>
 		<members>OpportunityLineItem__c.Amount__c</members>
@@ -60,6 +61,7 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>PublicDashboard</members>
 		<members>PublicDashboard/goxKvCdtghcTRbLoOKKmZZFaRsWQtv</members>
 		<name>Dashboard</name>
 	</types>
@@ -108,6 +110,7 @@
 		<name>Role</name>
 	</types>
 	<types>
+		<members>Opportunity.OpportunityClosed</members>
 		<members>Project_Resource__c.DateValidation</members>
 		<members>Project__c.StatusInProgressValidation</members>
 		<members>Project__c.StatusPreKickoffValidation</members>
