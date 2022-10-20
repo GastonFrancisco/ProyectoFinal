@@ -10,7 +10,6 @@
 	</types>
 	<types>
 		<members>Opportunity.EndDate__c</members>
-		<members>Opportunity.IsClosed__c</members>
 		<members>Opportunity.ProjectManager__c</members>
 		<members>Opportunity.StartDate__c</members>
 		<members>OpportunityLineItem__c.Amount__c</members>
