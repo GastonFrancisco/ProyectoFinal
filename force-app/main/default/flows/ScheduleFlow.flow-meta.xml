@@ -97,7 +97,7 @@
             <assignToReference>TotalAmount</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>ProjectResourceLoop.ResourceAmount__c</elementReference>
+                <elementReference>ProjectResourceLoop.ResourceAmountFormula__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -145,7 +145,7 @@
             <assignToReference>TotalAmount</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>ProjectResourceLoop.ResourceAmount__c</elementReference>
+                <elementReference>ProjectResourceLoop.ResourceAmountFormula__c</elementReference>
             </value>
         </assignmentItems>
         <connector>

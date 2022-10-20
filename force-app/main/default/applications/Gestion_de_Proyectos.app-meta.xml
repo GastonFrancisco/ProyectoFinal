@@ -43,14 +43,6 @@
         <formFactor>Large</formFactor>
         <pageOrSobjectType>standard-home</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>ProjectManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
@@ -68,22 +60,6 @@
         <pageOrSobjectType>Project__c</pageOrSobjectType>
         <type>Flexipage</type>
         <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Project_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Project__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>ProjectManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Project_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Project__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>ProjectManager</profile>
     </profileActionOverrides>
     <tabs>standard-home</tabs>
     <tabs>Project__c</tabs>

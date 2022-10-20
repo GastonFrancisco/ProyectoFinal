@@ -29,7 +29,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Squad_Lead__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Total_Hours__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AssignedHours__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -40,12 +48,12 @@
                 <field>Amount__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Status__c</field>
+                <behavior>Readonly</behavior>
+                <field>ResourceAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SquadLead__c</field>
+                <field>Status__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

@@ -132,6 +132,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>ProjectLineItem__c.Amount_Sum__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>ProjectLineItem__c.CoveredHours__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -162,6 +167,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Project_Resource__c.ResourceAmountFormula__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Project_Resource__c.ResourceAmount__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -191,6 +201,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Project__c.AssignedHours__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Project__c.EndDate__c</field>
         <readable>true</readable>
@@ -206,8 +221,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Project__c.ResourceAmount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Project__c.SquadLead__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Project__c.Squad_Lead__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

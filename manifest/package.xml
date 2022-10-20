@@ -16,6 +16,7 @@
 		<members>OpportunityLineItem__c.Opportunity__c</members>
 		<members>OpportunityLineItem__c.Quantity__c</members>
 		<members>OpportunityLineItem__c.Role__c</members>
+		<members>ProjectLineItem__c.Amount_Sum__c</members>
 		<members>ProjectLineItem__c.CoveredHours__c</members>
 		<members>ProjectLineItem__c.Project__c</members>
 		<members>ProjectLineItem__c.Quantity__c</members>
@@ -24,16 +25,20 @@
 		<members>Project_Resource__c.Assigned_Hours__c</members>
 		<members>Project_Resource__c.EndDate__c</members>
 		<members>Project_Resource__c.ProjectLineItem__c</members>
+		<members>Project_Resource__c.ResourceAmountFormula__c</members>
 		<members>Project_Resource__c.ResourceAmount__c</members>
 		<members>Project_Resource__c.Resource__c</members>
 		<members>Project_Resource__c.Role__c</members>
 		<members>Project_Resource__c.StartDate__c</members>
 		<members>Project__c.Account__c</members>
 		<members>Project__c.Amount__c</members>
+		<members>Project__c.AssignedHours__c</members>
 		<members>Project__c.EndDate__c</members>
 		<members>Project__c.Opportunity__c</members>
 		<members>Project__c.ProjectManager__c</members>
+		<members>Project__c.ResourceAmount__c</members>
 		<members>Project__c.SquadLead__c</members>
+		<members>Project__c.Squad_Lead__c</members>
 		<members>Project__c.StartDate__c</members>
 		<members>Project__c.Status__c</members>
 		<members>Project__c.Total_Hours__c</members>

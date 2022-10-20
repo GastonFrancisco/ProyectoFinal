@@ -30,6 +30,10 @@
                 <behavior>Readonly</behavior>
                 <field>CoveredHours__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Amount_Sum__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

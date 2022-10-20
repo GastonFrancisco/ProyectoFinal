@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusPreKickoffValidation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(IF( ISPICKVAL( Status__c , &apos;In Progress&apos;) , true, false) ,  OR(ISNULL( SquadLead__c ),  IF( Amount__c &lt;  ResourceAmount__c , true, false), IF( Total_Hours__c &gt; AssignedHours__c , true, false) ))</errorConditionFormula>
+    <errorMessage>Make sure that the amount of hours is covered, that you assigned a squad lead, and that the status is not at loss</errorMessage>
+</ValidationRule>

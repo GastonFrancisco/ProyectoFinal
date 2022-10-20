@@ -3,7 +3,7 @@
     <actionCalls>
         <name>GetUsers</name>
         <label>GetUsers</label>
-        <locationX>1150</locationX>
+        <locationX>1018</locationX>
         <locationY>998</locationY>
         <actionName>GetUsers</actionName>
         <actionType>apex</actionType>
@@ -26,7 +26,7 @@
     <assignments>
         <name>AddCounter</name>
         <label>AddCounter</label>
-        <locationX>1238</locationX>
+        <locationX>1106</locationX>
         <locationY>1238</locationY>
         <assignmentItems>
             <assignToReference>Contador</assignToReference>
@@ -42,7 +42,7 @@
     <assignments>
         <name>AddId</name>
         <label>AddId</label>
-        <locationX>1150</locationX>
+        <locationX>1018</locationX>
         <locationY>878</locationY>
         <assignmentItems>
             <assignToReference>StoreIdProjectLineItem</assignToReference>
@@ -58,7 +58,7 @@
     <assignments>
         <name>AddUsers</name>
         <label>AddUsers</label>
-        <locationX>1238</locationX>
+        <locationX>1106</locationX>
         <locationY>1358</locationY>
         <assignmentItems>
             <assignToReference>UsersFromList</assignToReference>
@@ -74,7 +74,7 @@
     <assignments>
         <name>EmptyUsers</name>
         <label>EmptyUsers</label>
-        <locationX>1150</locationX>
+        <locationX>1018</locationX>
         <locationY>1574</locationY>
         <assignmentItems>
             <assignToReference>FilteredUsersToAssign</assignToReference>
@@ -90,7 +90,7 @@
     <assignments>
         <name>RemoveUserList</name>
         <label>RemoveUserList</label>
-        <locationX>1150</locationX>
+        <locationX>1018</locationX>
         <locationY>758</locationY>
         <assignmentItems>
             <assignToReference>UsersFromList</assignToReference>
@@ -106,7 +106,7 @@
     <assignments>
         <name>ResetCounter</name>
         <label>ResetCounter</label>
-        <locationX>1150</locationX>
+        <locationX>1018</locationX>
         <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>Contador</assignToReference>
@@ -120,34 +120,9 @@
         </connector>
     </assignments>
     <decisions>
-        <name>AssignSquadLead</name>
-        <label>AssignSquadLead</label>
-        <locationX>182</locationX>
-        <locationY>3014</locationY>
-        <defaultConnector>
-            <targetReference>Copy_2_of_FinalScreen</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>HasSquadLead</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Project.SquadLead__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>GetProjectResource</targetReference>
-            </connector>
-            <label>HasSquadLead</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Create_ProjectResource</name>
         <label>Create ProjectResource</label>
-        <locationX>1436</locationX>
+        <locationX>1304</locationX>
         <locationY>2174</locationY>
         <defaultConnector>
             <targetReference>Each_User</targetReference>
@@ -179,7 +154,7 @@
     <decisions>
         <name>DateDecision</name>
         <label>DateDecision</label>
-        <locationX>1238</locationX>
+        <locationX>1106</locationX>
         <locationY>2294</locationY>
         <defaultConnector>
             <targetReference>Error_Message</targetReference>
@@ -204,7 +179,7 @@
     <decisions>
         <name>Decision</name>
         <label>Decision</label>
-        <locationX>1150</locationX>
+        <locationX>1018</locationX>
         <locationY>1694</locationY>
         <defaultConnector>
             <targetReference>MessageScreen</targetReference>
@@ -229,7 +204,7 @@
     <decisions>
         <name>DecisionInfo</name>
         <label>Decision Info</label>
-        <locationX>380</locationX>
+        <locationX>182</locationX>
         <locationY>398</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_FinalScreen</targetReference>
@@ -285,7 +260,7 @@
     <loops>
         <name>Each_User</name>
         <label>Each User</label>
-        <locationX>1018</locationX>
+        <locationX>886</locationX>
         <locationY>1934</locationY>
         <collectionReference>FilteredUsersToAssign</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -299,7 +274,7 @@
     <loops>
         <name>List</name>
         <label>List</label>
-        <locationX>1150</locationX>
+        <locationX>1018</locationX>
         <locationY>1118</locationY>
         <collectionReference>UsersFromApex</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -313,7 +288,7 @@
     <loops>
         <name>ProjectLineItem_Loop</name>
         <label>ProjectLineItem Loop</label>
-        <locationX>182</locationX>
+        <locationX>50</locationX>
         <locationY>518</locationY>
         <collectionReference>GetProjectLineItems</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -321,7 +296,7 @@
             <targetReference>ResetCounter</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>AssignSquadLead</targetReference>
+            <targetReference>GetProjectResource</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -346,7 +321,7 @@
     <recordCreates>
         <name>ProjectResource</name>
         <label>ProjectResource</label>
-        <locationX>1106</locationX>
+        <locationX>974</locationX>
         <locationY>2414</locationY>
         <connector>
             <targetReference>Each_User</targetReference>
@@ -393,7 +368,7 @@
     <recordLookups>
         <name>GetProjectLineItems</name>
         <label>GetProjectLineItems</label>
-        <locationX>380</locationX>
+        <locationX>182</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -415,7 +390,7 @@
         <name>GetProjectResource</name>
         <label>GetProjectResource</label>
         <locationX>50</locationX>
-        <locationY>3134</locationY>
+        <locationY>3014</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Resources_Alocated</targetReference>
@@ -435,7 +410,7 @@
     <recordLookups>
         <name>Project</name>
         <label>Project</label>
-        <locationX>380</locationX>
+        <locationX>182</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -457,7 +432,7 @@
         <name>UpdateProject</name>
         <label>UpdateProject</label>
         <locationX>50</locationX>
-        <locationY>3374</locationY>
+        <locationY>3254</locationY>
         <connector>
             <targetReference>FinalScreen</targetReference>
         </connector>
@@ -480,7 +455,7 @@
     <screens>
         <name>Copy_1_of_FinalScreen</name>
         <label>Copy 1 of FinalScreen</label>
-        <locationX>578</locationX>
+        <locationX>314</locationX>
         <locationY>518</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -494,25 +469,9 @@
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>Copy_2_of_FinalScreen</name>
-        <label>Copy 2 of FinalScreen</label>
-        <locationX>314</locationX>
-        <locationY>3134</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Copy_2_of_ResourcesAssignment</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Resources have been allocated in this project.&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
         <name>Error_Message</name>
         <label>Error Message</label>
-        <locationX>1370</locationX>
+        <locationX>1238</locationX>
         <locationY>2414</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
@@ -532,7 +491,7 @@
         <name>FinalScreen</name>
         <label>FinalScreen</label>
         <locationX>50</locationX>
-        <locationY>3494</locationY>
+        <locationY>3374</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -547,7 +506,7 @@
     <screens>
         <name>MessageScreen</name>
         <label>MessageScreen</label>
-        <locationX>1282</locationX>
+        <locationX>1150</locationX>
         <locationY>1814</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -567,7 +526,7 @@
         <name>Resources_Alocated</name>
         <label>Resources Alocated</label>
         <locationX>50</locationX>
-        <locationY>3254</locationY>
+        <locationY>3134</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -597,7 +556,7 @@
             <inputParameters>
                 <name>minRowSelection</name>
                 <value>
-                    <numberValue>0.0</numberValue>
+                    <numberValue>1.0</numberValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -638,7 +597,7 @@
     <screens>
         <name>Screen_Alocate_Resource</name>
         <label>Screen Alocate Resource</label>
-        <locationX>1436</locationX>
+        <locationX>1304</locationX>
         <locationY>2054</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -810,7 +769,7 @@
     <screens>
         <name>ScreenChooseUser</name>
         <label>ScreenChooseUser</label>
-        <locationX>1018</locationX>
+        <locationX>886</locationX>
         <locationY>1814</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -873,7 +832,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>254</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>GetProjectLineItems</targetReference>
@@ -898,6 +857,13 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>User</objectType>
+    </variables>
+    <variables>
+        <name>IdResourceCollection</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>ProjectRole</name>
