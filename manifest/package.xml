@@ -61,7 +61,6 @@
 	</types>
 	<types>
 		<members>PublicDashboard</members>
-		<members>PublicDashboard/RIAtVZiWqSLuXliLisvfrpMJXqyXYH1</members>
 		<members>PublicDashboard/goxKvCdtghcTRbLoOKKmZZFaRsWQtv</members>
 		<name>Dashboard</name>
 	</types>
@@ -112,7 +111,6 @@
 	</types>
 	<types>
 		<members>unfiled$public</members>
-		<members>unfiled$public/Hours_by_Role_Report_sn4</members>
 		<members>unfiled$public/Project_Info_Tnw</members>
 		<name>Report</name>
 	</types>
