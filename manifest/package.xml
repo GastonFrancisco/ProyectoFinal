@@ -60,6 +60,7 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>PublicDashboard</members>
 		<members>PublicDashboard/goxKvCdtghcTRbLoOKKmZZFaRsWQtv</members>
 		<name>Dashboard</name>
 	</types>
