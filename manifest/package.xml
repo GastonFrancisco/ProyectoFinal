@@ -17,7 +17,7 @@
 		<members>OpportunityLineItem__c.Quantity__c</members>
 		<members>OpportunityLineItem__c.Role__c</members>
 		<members>ProjectLineItem__c.Amount_Sum__c</members>
-		<members>ProjectLineItem__c.HoursLeftToCover__c</members>
+		<members>ProjectLineItem__c.CoveredHours__c</members>
 		<members>ProjectLineItem__c.Project__c</members>
 		<members>ProjectLineItem__c.Quantity__c</members>
 		<members>ProjectLineItem__c.ResourceHours__c</members>
@@ -104,6 +104,10 @@
 		<members>unfiled$public/Project_Info_Tnw</members>
 		<members>unfiled$public/Total_Hours_vs_Covered_Hours_4HW</members>
 		<name>Report</name>
+	</types>
+	<types>
+		<members>Projects_with_ProjectsLineItem_with_Project_Resources</members>
+		<name>ReportType</name>
 	</types>
 	<types>
 		<members>Architect</members>

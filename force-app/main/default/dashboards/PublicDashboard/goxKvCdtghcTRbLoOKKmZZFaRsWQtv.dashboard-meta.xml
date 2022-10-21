@@ -202,7 +202,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>ProjectLineItem__c.HoursLeftToCover__c</reportColumn>
+                        <reportColumn>ProjectLineItem__c.CoveredHours__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>

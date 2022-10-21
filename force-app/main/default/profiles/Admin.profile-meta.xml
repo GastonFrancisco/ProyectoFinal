@@ -137,7 +137,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>ProjectLineItem__c.HoursLeftToCover__c</field>
+        <field>ProjectLineItem__c.CoveredHours__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

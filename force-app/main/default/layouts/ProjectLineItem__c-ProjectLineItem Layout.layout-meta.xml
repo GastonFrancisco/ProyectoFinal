@@ -28,7 +28,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>HoursLeftToCover__c</field>
+                <field>CoveredHours__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

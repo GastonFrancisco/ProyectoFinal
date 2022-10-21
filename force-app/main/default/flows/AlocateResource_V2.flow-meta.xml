@@ -672,7 +672,7 @@
         </fields>
         <fields>
             <name>Role</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!ProjectLineItem_Loop.Role__c} - Horas a cubrir: {!ProjectLineItem_Loop.HoursLeftToCover__c}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!ProjectLineItem_Loop.Role__c} - Horas a cubrir: {!ProjectLineItem_Loop.CoveredHours__c}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>

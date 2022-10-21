@@ -7,7 +7,7 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Project__c.ProjecstLineItem__r$HoursLeftToCover__c</column>
+            <column>Project__c.ProjecstLineItem__r$CoveredHours__c</column>
         </chartSummaries>
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -31,7 +31,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Project__c.ProjecstLineItem__r$HoursLeftToCover__c</field>
+        <field>Project__c.ProjecstLineItem__r$CoveredHours__c</field>
     </columns>
     <format>Summary</format>
     <groupingsDown>
