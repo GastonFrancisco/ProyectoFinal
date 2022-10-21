@@ -699,7 +699,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>RatePerHour</name>
-                    <fieldText>&lt;p&gt;{!Each_User.Rateph__c}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Rate p/h: ${!Each_User.Rateph__c}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <inputParameters>
