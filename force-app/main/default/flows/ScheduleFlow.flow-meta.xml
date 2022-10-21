@@ -116,7 +116,7 @@
     <decisions>
         <name>CheckStartDate</name>
         <label>CheckStartDate</label>
-        <locationX>710</locationX>
+        <locationX>842</locationX>
         <locationY>276</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -133,6 +133,21 @@
                 <targetReference>FirstDecision</targetReference>
             </connector>
             <label>IfStartDateIsToday</label>
+        </rules>
+        <rules>
+            <name>IfEndDateIsToday</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.EndDate__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>EndDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>StatusCompleted</targetReference>
+            </connector>
+            <label>IfEndDateIsToday</label>
         </rules>
     </decisions>
     <decisions>
@@ -256,6 +271,27 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
+        <name>StatusCompleted</name>
+        <label>StatusCompleted</label>
+        <locationX>1018</locationX>
+        <locationY>396</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Project__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>UpdateStatusProject</name>
         <label>UpdateStatusProject</label>
         <locationX>50</locationX>
@@ -277,7 +313,7 @@
         <object>Project__c</object>
     </recordUpdates>
     <start>
-        <locationX>584</locationX>
+        <locationX>716</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CheckStartDate</targetReference>
