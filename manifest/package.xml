@@ -17,7 +17,7 @@
 		<members>OpportunityLineItem__c.Quantity__c</members>
 		<members>OpportunityLineItem__c.Role__c</members>
 		<members>ProjectLineItem__c.Amount_Sum__c</members>
-		<members>ProjectLineItem__c.CoveredHours__c</members>
+		<members>ProjectLineItem__c.HoursLeftToCover__c</members>
 		<members>ProjectLineItem__c.Project__c</members>
 		<members>ProjectLineItem__c.Quantity__c</members>
 		<members>ProjectLineItem__c.ResourceHours__c</members>
@@ -98,7 +98,11 @@
 		<name>QuickAction</name>
 	</types>
 	<types>
+		<members>unfiled$public/Copy_of_Total_Hours_By_Role_sGh</members>
+		<members>unfiled$public/Covered_Hours_By_Resource_HxF</members>
+		<members>unfiled$public/HoursByRole_4cV</members>
 		<members>unfiled$public/Project_Info_Tnw</members>
+		<members>unfiled$public/Total_Hours_vs_Covered_Hours_4HW</members>
 		<name>Report</name>
 	</types>
 	<types>
