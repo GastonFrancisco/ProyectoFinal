@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusCompletedValidation</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( ISPICKVAL( Status__c , &apos;Completed&apos;),    OR( IF( EndDate__c   &gt;   TODAY() , true, false) , IF( CompletedTasks__c  &lt;&gt;  TasksCount__c , true, false)), false)</errorConditionFormula>
+    <errorMessage>Your team has uncompleted tasks or it&apos;s not the end date.</errorMessage>
+</ValidationRule>

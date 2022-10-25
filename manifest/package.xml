@@ -33,6 +33,7 @@
 		<members>Project__c.Account__c</members>
 		<members>Project__c.Amount__c</members>
 		<members>Project__c.AssignedHours__c</members>
+		<members>Project__c.CompletedTasks__c</members>
 		<members>Project__c.EndDate__c</members>
 		<members>Project__c.Opportunity__c</members>
 		<members>Project__c.ProjectManager__c</members>
@@ -41,7 +42,17 @@
 		<members>Project__c.Squad_Lead__c</members>
 		<members>Project__c.StartDate__c</members>
 		<members>Project__c.Status__c</members>
+		<members>Project__c.TasksCount__c</members>
 		<members>Project__c.Total_Hours__c</members>
+		<members>ResourceTask__c.AproximateHours__c</members>
+		<members>ResourceTask__c.Description__c</members>
+		<members>ResourceTask__c.EndDate__c</members>
+		<members>ResourceTask__c.IsCompleted__c</members>
+		<members>ResourceTask__c.Project__c</members>
+		<members>ResourceTask__c.Resource__c</members>
+		<members>ResourceTask__c.StartDate__c</members>
+		<members>ResourceTask__c.Status__c</members>
+		<members>ResourceTask__c.Summary__c</members>
 		<members>User.Rateph__c</members>
 		<members>User.Role__c</members>
 		<name>CustomField</name>
@@ -52,6 +63,7 @@
 		<members>ProjectLineItem__c</members>
 		<members>Project_Resource__c</members>
 		<members>Project__c</members>
+		<members>ResourceTask__c</members>
 		<members>User</members>
 		<name>CustomObject</name>
 	</types>
@@ -69,7 +81,16 @@
 		<name>FlexiPage</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>AlocateResource_V2</members>
+		<members>Create_Project_ProjectLineItem</members>
+		<members>ErrorsFlowProject</members>
+		<members>ProjectCompletedTasks</members>
+		<members>ProjectTaskCount</members>
+		<members>ScheduleFlow</members>
+		<members>TestFlowV1</members>
+		<members>UpdateProjectDeletedTask</members>
+		<members>UpdateSumAmountResource</members>
+		<members>Update_OppLineItem_Name</members>
 		<name>Flow</name>
 	</types>
 	<types>
@@ -79,19 +100,24 @@
 		<members>ProjectLineItem__c-ProjectLineItem Layout</members>
 		<members>Project_Resource__c-Project Resource Layout</members>
 		<members>Project__c-Project Layout</members>
+		<members>ResourceTask__c-Resource Task Layout</members>
+		<members>User-User Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
+		<members>Opportunity.MyOpportunities</members>
 		<members>OpportunityLineItem__c.All</members>
 		<members>ProjectLineItem__c.All</members>
 		<members>Project_Resource__c.All</members>
 		<members>Project__c.All</members>
 		<members>Project__c.My_Projects</members>
+		<members>ResourceTask__c.All</members>
 		<name>ListView</name>
 	</types>
 	<types>
 		<members>Admin</members>
 		<members>Project Manager</members>
+		<members>Resource</members>
 		<name>Profile</name>
 	</types>
 	<types>
@@ -120,6 +146,7 @@
 	<types>
 		<members>Opportunity.OpportunityClosed</members>
 		<members>Project_Resource__c.DateValidation</members>
+		<members>Project__c.StatusCompletedValidation</members>
 		<members>Project__c.StatusInProgressValidation</members>
 		<members>Project__c.StatusPreKickoffValidation</members>
 		<name>ValidationRule</name>

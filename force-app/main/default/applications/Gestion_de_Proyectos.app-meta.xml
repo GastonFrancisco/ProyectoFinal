@@ -65,6 +65,7 @@
     <tabs>Project__c</tabs>
     <tabs>ProjectLineItem__c</tabs>
     <tabs>Project_Resource__c</tabs>
+    <tabs>ResourceTask__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Gestion_de_Proyectos_UtilityBar</utilityBar>
 </CustomApplication>
