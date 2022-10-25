@@ -49,6 +49,7 @@
 		<members>ResourceTask__c.EndDate__c</members>
 		<members>ResourceTask__c.IsCompleted__c</members>
 		<members>ResourceTask__c.Project__c</members>
+		<members>ResourceTask__c.RegisteredHours__c</members>
 		<members>ResourceTask__c.Resource__c</members>
 		<members>ResourceTask__c.StartDate__c</members>
 		<members>ResourceTask__c.Status__c</members>
