@@ -47,6 +47,7 @@
 		<members>ResourceTask__c.AproximateHours__c</members>
 		<members>ResourceTask__c.Description__c</members>
 		<members>ResourceTask__c.EndDate__c</members>
+		<members>ResourceTask__c.InProgress__c</members>
 		<members>ResourceTask__c.IsCompleted__c</members>
 		<members>ResourceTask__c.Project__c</members>
 		<members>ResourceTask__c.RegisteredHours__c</members>
@@ -104,6 +105,11 @@
 		<members>ResourceTask__c-Resource Task Layout</members>
 		<members>User-User Layout</members>
 		<name>Layout</name>
+	</types>
+	<types>
+		<members>projectsComponent</members>
+		<members>tasksComponent</members>
+		<name>LightningComponentBundle</name>
 	</types>
 	<types>
 		<members>Opportunity.MyOpportunities</members>

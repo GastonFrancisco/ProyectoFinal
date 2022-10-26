@@ -261,6 +261,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>ResourceTask__c.InProgress__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>ResourceTask__c.IsCompleted__c</field>
         <readable>true</readable>
     </fieldPermissions>

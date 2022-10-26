@@ -1,0 +1,21 @@
+.encabezado{
+    background-color: rgba(225, 22, 7, 0.584);
+    border-color: rgb(23, 27, 29);
+    border-radius: 5px;
+    border: 1px; 
+    border-left: 20px;
+    border-right: 20px;
+    display: flex;
+    table-layout: fixed;
+    text-align: center
+}
+
+.recordform{
+    padding-bottom: 4px;
+    padding-block-end: 4px;
+
+}
+
+.opacity{
+    opacity: 50%;
+}

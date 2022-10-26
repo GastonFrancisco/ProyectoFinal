@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        <template if:true={projects}>
+            <template for:each={projects} for:item="pro">
+                <lightning-card key={pro.project} title={pro.project} icon-name="utility:task">
+                    <div class="encabezado slds-box_xx-small" style="font-weight: bold; text-align: center">
+                        <div class="slds-col slds-size_2-of-12">Task</div>
+                        <div class="slds-col slds-size_2-of-12">State</div>
+                        <div class="slds-col slds-size_2-of-12">Estimated Hours</div>
+                        <div class="slds-col slds-size_2-of-12">Registered Hours</div>
+                        <div class="slds-col slds-size_1-of-12">Insert Hours</div>
+                        <div class="slds-col slds-size_3-of-12">Actions</div>
+                    </div>
+                    <br>
+                    <template if:true={pro.info}>
+                        <template for:each={pro.info} for:item="task">
+                            <c-tasks-component key={task.Id} task={task}></c-tasks-component>
+                        </template>
+                    </template>
+                </lightning-card>
+            </template>
+        </template>
+    </lightning-card>
+</template>
