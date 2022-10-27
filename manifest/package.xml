@@ -45,11 +45,13 @@
 		<members>Project__c.TasksCount__c</members>
 		<members>Project__c.Total_Hours__c</members>
 		<members>ResourceTask__c.AproximateHours__c</members>
+		<members>ResourceTask__c.Cost__c</members>
 		<members>ResourceTask__c.Description__c</members>
 		<members>ResourceTask__c.EndDate__c</members>
 		<members>ResourceTask__c.InProgress__c</members>
 		<members>ResourceTask__c.IsCompleted__c</members>
 		<members>ResourceTask__c.Project__c</members>
+		<members>ResourceTask__c.Rateph__c</members>
 		<members>ResourceTask__c.RegisteredHours__c</members>
 		<members>ResourceTask__c.Resource__c</members>
 		<members>ResourceTask__c.StartDate__c</members>
@@ -134,8 +136,10 @@
 	<types>
 		<members>unfiled$public/Copy_of_Total_Hours_By_Role_sGh</members>
 		<members>unfiled$public/Covered_Hours_By_Resource_HxF</members>
+		<members>unfiled$public/Estimated_Hours_vs_Registered_Hours_QKb</members>
 		<members>unfiled$public/HoursByRole_4cV</members>
 		<members>unfiled$public/Project_Info_Tnw</members>
+		<members>unfiled$public/RealCost_qWr</members>
 		<members>unfiled$public/Total_Hours_vs_Covered_Hours_4HW</members>
 		<name>Report</name>
 	</types>
