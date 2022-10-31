@@ -189,5 +189,14 @@
 		<members>Project__c.StatusPreKickoffValidation</members>
 		<name>ValidationRule</name>
 	</types>
+	<types>
+		<members>Vacation__c</members>
+		<name>Workflow</name>
+	</types>
+	<types>
+		<members>Vacation__c.Approved</members>
+		<members>Vacation__c.Rejected</members>
+		<name>WorkflowFieldUpdate</name>
+	</types>
 	<version>55.0</version>
 </Package>
