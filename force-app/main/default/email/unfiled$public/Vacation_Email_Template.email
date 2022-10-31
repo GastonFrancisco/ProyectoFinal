@@ -1,0 +1,3 @@
+{!Vacation__c.Resource__c} is requesting  out of office days for this project.
+The resource is allocated in this project: {!Vacation__c.Project__c}
+From {!Vacation__c.StartDate__c} to {!Vacation__c.EndDate__c}.

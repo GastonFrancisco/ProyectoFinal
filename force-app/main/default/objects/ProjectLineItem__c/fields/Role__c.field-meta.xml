@@ -26,11 +26,6 @@
                 <default>false</default>
                 <label>Architect</label>
             </value>
-            <value>
-                <fullName>ProjectManager</fullName>
-                <default>false</default>
-                <label>ProjectManager</label>
-            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

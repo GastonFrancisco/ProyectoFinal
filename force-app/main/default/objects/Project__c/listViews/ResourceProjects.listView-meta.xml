@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ResourceProjects</fullName>
+    <columns>NAME</columns>
+    <columns>ProjectManager__c</columns>
+    <columns>SquadLead__c</columns>
+    <columns>StartDate__c</columns>
+    <columns>EndDate__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Resource Projects</label>
+    <sharedTo>
+        <role>Architect</role>
+        <role>Consultant</role>
+        <role>Developer</role>
+    </sharedTo>
+</ListView>

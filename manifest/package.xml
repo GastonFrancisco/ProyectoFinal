@@ -5,6 +5,10 @@
 		<name>ApexClass</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>ApprovalProcess</name>
+	</types>
+	<types>
 		<members>Gestion_de_Proyectos</members>
 		<name>CustomApplication</name>
 	</types>
@@ -50,6 +54,7 @@
 		<members>ResourceTask__c.EndDate__c</members>
 		<members>ResourceTask__c.InProgress__c</members>
 		<members>ResourceTask__c.IsCompleted__c</members>
+		<members>ResourceTask__c.ProjectName__c</members>
 		<members>ResourceTask__c.Project__c</members>
 		<members>ResourceTask__c.Rateph__c</members>
 		<members>ResourceTask__c.RegisteredHours__c</members>
@@ -59,6 +64,15 @@
 		<members>ResourceTask__c.Summary__c</members>
 		<members>User.Rateph__c</members>
 		<members>User.Role__c</members>
+		<members>Vacation__c.Description__c</members>
+		<members>Vacation__c.EndDate__c</members>
+		<members>Vacation__c.ProjectManager__c</members>
+		<members>Vacation__c.Project_Name__c</members>
+		<members>Vacation__c.Project__c</members>
+		<members>Vacation__c.Resource__c</members>
+		<members>Vacation__c.SquadLead__c</members>
+		<members>Vacation__c.StartDate__c</members>
+		<members>Vacation__c.Status__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
@@ -69,6 +83,7 @@
 		<members>Project__c</members>
 		<members>ResourceTask__c</members>
 		<members>User</members>
+		<members>Vacation__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -76,9 +91,13 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
-		<members>PublicDashboard</members>
+		<members>PublicDashboard/MJMORMqsbdanyaZNUlYRHTvZOqogBg</members>
 		<members>PublicDashboard/goxKvCdtghcTRbLoOKKmZZFaRsWQtv</members>
 		<name>Dashboard</name>
+	</types>
+	<types>
+		<members>unfiled$public/Vacation_Email_Template</members>
+		<name>EmailTemplate</name>
 	</types>
 	<types>
 		<members>*</members>
@@ -86,10 +105,14 @@
 	</types>
 	<types>
 		<members>AlocateResource_V2</members>
+		<members>Coworker_Email_Alert</members>
 		<members>Create_Project_ProjectLineItem</members>
+		<members>Delete_Vacations_Screen</members>
 		<members>ErrorsFlowProject</members>
 		<members>ProjectCompletedTasks</members>
 		<members>ProjectTaskCount</members>
+		<members>Request_Out_of_Office</members>
+		<members>ResourceTasks</members>
 		<members>ScheduleFlow</members>
 		<members>TestFlowV1</members>
 		<members>UpdateProjectDeletedTask</members>
@@ -106,6 +129,7 @@
 		<members>Project__c-Project Layout</members>
 		<members>ResourceTask__c-Resource Task Layout</members>
 		<members>User-User Layout</members>
+		<members>Vacation__c-Vacation Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
@@ -120,7 +144,9 @@
 		<members>Project_Resource__c.All</members>
 		<members>Project__c.All</members>
 		<members>Project__c.My_Projects</members>
+		<members>Project__c.ResourceProjects</members>
 		<members>ResourceTask__c.All</members>
+		<members>Vacation__c.All</members>
 		<name>ListView</name>
 	</types>
 	<types>
@@ -139,6 +165,7 @@
 		<members>unfiled$public/Estimated_Hours_vs_Registered_Hours_QKb</members>
 		<members>unfiled$public/HoursByRole_4cV</members>
 		<members>unfiled$public/Project_Info_Tnw</members>
+		<members>unfiled$public/Project_Total_vs_Role_Estimated_M3b</members>
 		<members>unfiled$public/RealCost_qWr</members>
 		<members>unfiled$public/Total_Hours_vs_Covered_Hours_4HW</members>
 		<name>Report</name>

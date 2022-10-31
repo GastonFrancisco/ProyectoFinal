@@ -9,46 +9,8 @@
     <dashboardColorPalette>unity</dashboardColorPalette>
     <dashboardGridLayout>
         <dashboardGridComponents>
-            <colSpan>5</colSpan>
+            <colSpan>12</colSpan>
             <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Project__c.ProjecstLineItem__r$Quantity__c</column>
-                </chartSummary>
-                <componentChartTheme>dark</componentChartTheme>
-                <componentType>Funnel</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Project__c.ProjecstLineItem__r$Role__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Copy of Total Hours By Role</header>
-                <legendPosition>Right</legendPosition>
-                <maxValuesDisplayed>6</maxValuesDisplayed>
-                <report>unfiled$public/Copy_of_Total_Hours_By_Role_sGh</report>
-                <showPercentage>true</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>7</colSpan>
-            <columnIndex>5</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentChartTheme>dark</componentChartTheme>
@@ -62,7 +24,25 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
+                        <reportColumn>Project__c.Squad_Lead__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Project__c.Amount__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
                         <reportColumn>Project__c.Total_Hours__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Project__c.AssignedHours__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
@@ -79,12 +59,6 @@
                         <showTotal>false</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Project__c.Amount__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
                     <flexTableSortInfo>
                         <sortColumn>Project__c.Account__c</sortColumn>
                         <sortOrder>1</sortOrder>
@@ -96,134 +70,12 @@
                 <report>unfiled$public/Project_Info_Tnw</report>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>5</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Project__c$Total_Hours__c</column>
-                </chartSummary>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Project__c.ProjecstLineItem__r$ResourceHours__c</column>
-                </chartSummary>
-                <componentChartTheme>dark</componentChartTheme>
-                <componentType>Column</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Project__c$Name</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Total Hours vs Covered Hours</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/Total_Hours_vs_Covered_Hours_4HW</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>5</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentChartTheme>dark</componentChartTheme>
-                <componentType>FlexTable</componentType>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>Project_Resource__c.Role__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Project_Resource__c.Resource__c.Name</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Project_Resource__c.Assigned_Hours__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortColumn>Project_Resource__c.Role__c</sortColumn>
-                        <sortOrder>1</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                </flexComponentProperties>
-                <groupingSortProperties/>
-                <header>Covered Hours By Resource</header>
-                <report>unfiled$public/Covered_Hours_By_Resource_HxF</report>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>8</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentChartTheme>dark</componentChartTheme>
-                <componentType>FlexTable</componentType>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>Project__c.Name</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>ProjectLineItem__c.Role__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>ProjectLineItem__c.CoveredHours__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortColumn>ProjectLineItem__c.Role__c</sortColumn>
-                        <sortOrder>1</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                </flexComponentProperties>
-                <groupingSortProperties/>
-                <header>Hours Left To Cover</header>
-                <report>unfiled$public/HoursByRole_4cV</report>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
+            <rowSpan>15</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
-    <dashboardType>SpecifiedUser</dashboardType>
+    <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <runningUser>gaston.francisco97@projectp5.com</runningUser>
     <textColor>#000000</textColor>

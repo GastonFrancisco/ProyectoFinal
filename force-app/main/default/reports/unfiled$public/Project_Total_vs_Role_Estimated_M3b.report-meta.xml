@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Project__c.Amount__c:SUM - Project_Resource__c.ResourceAmount__c:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Revenue/Loss</masterLabel>
+        <scale>0</scale>
+    </aggregates>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -7,12 +16,16 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Project__c$Total_Hours__c</column>
+            <column>Project__c$Amount__c</column>
         </chartSummaries>
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Project__c.ProjecstLineItem__r$ResourceHours__c</column>
+            <column>Project__c.ProjecstLineItem__r.Project_Resources__r$ResourceAmount__c</column>
+        </chartSummaries>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA1</column>
         </chartSummaries>
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -33,11 +46,11 @@
     </chart>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Project__c$Total_Hours__c</field>
+        <field>Project__c$Amount__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Project__c.ProjecstLineItem__r$ResourceHours__c</field>
+        <field>Project__c.ProjecstLineItem__r.Project_Resources__r$ResourceAmount__c</field>
     </columns>
     <format>Summary</format>
     <groupingsDown>
@@ -45,16 +58,16 @@
         <field>Project__c$Name</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Total Hours vs Covered Hours</name>
+    <name>Project Total vs Role Estimated</name>
     <params>
         <name>co</name>
         <value>0</value>
     </params>
     <reportType>Projects_with_ProjectsLineItem_with_Project_Resources__c</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
-    <showGrandTotal>false</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Project__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

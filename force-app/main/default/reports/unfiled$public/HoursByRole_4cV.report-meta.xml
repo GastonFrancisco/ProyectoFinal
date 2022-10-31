@@ -12,13 +12,13 @@
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
-        <groupingColumn>Project__c$Name</groupingColumn>
-        <legendPosition>Right</legendPosition>
+        <groupingColumn>Project__c.ProjecstLineItem__r$Role__c</groupingColumn>
+        <legendPosition>Bottom</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>true</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -27,16 +27,13 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Project__c.ProjecstLineItem__r$Role__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Project__c.ProjecstLineItem__r$CoveredHours__c</field>
     </columns>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Project__c$Name</field>
+        <field>Project__c.ProjecstLineItem__r$Role__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Hours Left To Cover</name>
@@ -45,12 +42,12 @@
         <value>0</value>
     </params>
     <reportType>Projects_with_ProjectsLineItem_with_Project_Resources__c</reportType>
-    <scope>user</scope>
-    <showDetails>true</showDetails>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
     <showGrandTotal>false</showGrandTotal>
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Project__c$CreatedDate</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>
