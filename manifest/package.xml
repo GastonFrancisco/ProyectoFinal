@@ -137,7 +137,9 @@
 		<name>Layout</name>
 	</types>
 	<types>
+		<members>allocateresource</members>
 		<members>projectsComponent</members>
+		<members>resource</members>
 		<members>tasksComponent</members>
 		<name>LightningComponentBundle</name>
 	</types>

@@ -346,6 +346,12 @@
                 <identifier>flexipage_reportChart4</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>allocateresource</componentName>
+                <identifier>c_allocateresource</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>leftcol</name>
         <type>Region</type>
     </flexiPageRegions>

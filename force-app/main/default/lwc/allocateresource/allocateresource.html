@@ -1,0 +1,27 @@
+<template>
+    <lightning-card>
+        <template if:true={roles}>
+            <template for:each={roles} for:item="rol">
+                <lightning-card key={rol.role} title={rol.role} icon-name="utility:task" >
+                    <div class="encabezado slds-box_xx-small" style="font-weight: bold; text-align: center">
+                        <div class="slds-col slds-size_2-of-12">Name</div>
+                        <div class="slds-col slds-size_1-of-12">RatePh</div>
+                        <div class="slds-col slds-size_4-of-12">Allocated</div>
+                        <div class="slds-col slds-size_2-of-12">Desde</div>
+                        <div class="slds-col slds-size_1-of-12"></div>
+                        <div class="slds-col slds-size_2-of-12">Hasta</div>
+                    </div>
+                    <br>
+                    <template if:true={rol.resource}>
+                        <template for:each={rol.resource} for:item="resource">
+                            <c-resource key={resource.Id} resource={resource} onrefresh={refresh} ></c-resource>
+                        </template>
+
+
+</template>
+</lightning-card>
+</template>
+<lightning-button class="slds-button_font" icon-name="utility:success" label="Assigned" onclick={completeTask}></lightning-button>
+</template>
+</lightning-card>
+</template>

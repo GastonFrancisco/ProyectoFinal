@@ -1,0 +1,12 @@
+.encabezado {
+    background-color: rgba(27, 149, 255);
+    border-color: rgb(23, 27, 29);
+    border-radius: 5px;
+    border: 1px;
+    border-left: 20px;
+    border-right: 20px;
+    display: flex;
+    table-layout: fixed;
+    text-align: center;
+    font-size: 130%;
+}

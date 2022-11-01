@@ -1,0 +1,42 @@
+<template>
+    <template if:true={resource}>
+        <lightning-record-edit-form object-api-name='User' record-id={resource.Id}>
+            <div class="slds-grid slds-box_xx-small" style="font-weight: bold; text-align: center">
+                <div class="slds-col slds-size_2-of-12">
+                    <div class="slds-grid slds-box_xx-small" style="font-weight: bold; text-align: center">
+                    <div class="slds-col slds-size_1-of-2">
+                        <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81"  onchange={handleClick}  />
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name='Name' variant="label-hidden"></lightning-output-field>
+
+                    </div>
+                  
+                </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    <lightning-output-field field-name='Rateph__c' variant="label-hidden"></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_4-of-12">
+                    <template if:true={resource.Project_Resources__r}>
+                        <template for:each={resource.Project_Resources__r} for:item="pr">
+                            <div class="slds-grid slds-box_xx-small" key={pr.Id} style="font-weight: bold; text-align: center">
+
+                                <div class="slds-col slds-size_2-of-4">desde: {pr.StartDate__c}</div>
+                                <div class="slds-col slds-size_2-of-4">hasta:  {pr.EndDate__c}</div>
+                            </div>
+                        </template>
+</template>
+
+</div>
+<div class="slds-col slds-size_2-of-12" style="text-align: center">
+    <lightning-input class="" type="date" variant="label-hidden" onchange={handleChangedesde} disabled={disabled}></lightning-input>
+</div>
+<div class="slds-col slds-size_1-of-12"></div>
+<div class="slds-col slds-size_2-of-12" style="text-align: center">
+    <lightning-input class="" type="date" variant="label-hidden" onchange={handleChangehasta} disabled={disabled}></lightning-input>
+</div>
+</div>
+</lightning-record-edit-form>
+</template>
+</template>
