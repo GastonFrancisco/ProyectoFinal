@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProjectEndDateValidationRule</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( EndDate__c &gt; ProjectLineItem__r.Project__r.EndDate__c , true, false)</errorConditionFormula>
+    <errorMessage>A resource can&apos;t be assigned an end date bigger than the project&apos;s end date.</errorMessage>
+</ValidationRule>

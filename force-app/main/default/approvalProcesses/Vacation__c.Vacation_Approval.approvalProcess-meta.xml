@@ -44,12 +44,20 @@
             <name>Approved</name>
             <type>FieldUpdate</type>
         </action>
+        <action>
+            <name>Approved_Email_Alert</name>
+            <type>Alert</type>
+        </action>
     </finalApprovalActions>
     <finalApprovalRecordLock>true</finalApprovalRecordLock>
     <finalRejectionActions>
         <action>
             <name>Rejected</name>
             <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Rejected_Email_Alert</name>
+            <type>Alert</type>
         </action>
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>

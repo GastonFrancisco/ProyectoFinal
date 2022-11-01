@@ -1,11 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
+    <assignments>
+        <name>Add_Counter</name>
+        <label>Add Counter</label>
+        <locationX>270</locationX>
+        <locationY>2486</locationY>
+        <assignmentItems>
+            <assignToReference>Counter</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Counter_Loop</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Dates_to_Resource</name>
+        <label>Assign Dates to Resource</label>
+        <locationX>138</locationX>
+        <locationY>3062</locationY>
+        <assignmentItems>
+            <assignToReference>ProjectResource.StartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PickedStartDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ProjectResource.EndDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PickedEndDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ProjectResource.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Selected_Project_Resources_Loop.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Project_Resource_Collection_Assigment</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Project_Squad_Lead</name>
+        <label>Assign Project Squad Lead</label>
+        <locationX>160</locationX>
+        <locationY>1214</locationY>
+        <assignmentItems>
+            <assignToReference>Project.SquadLead__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ProjectSquadLead.Resource__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Project_Record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_ProjectLineItemIds</name>
+        <label>Assign ProjectLineItemIds</label>
+        <locationX>270</locationX>
+        <locationY>1910</locationY>
+        <assignmentItems>
+            <assignToReference>ProjectLineItemIdCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_ProjectLineItems.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_ProjectLineItems</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_1_of_Assign_ProjectLineItemIds</name>
+        <label>Copy 1 of Assign ProjectLineItemIds</label>
+        <locationX>248</locationX>
+        <locationY>758</locationY>
+        <assignmentItems>
+            <assignToReference>ProjectLineItemsIdsCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Copy_1_of_Loop_ProjectLineItems.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_1_of_Loop_ProjectLineItems</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Project_Resource_Collection_Assigment</name>
+        <label>Project Resource Collection Assigment</label>
+        <locationX>138</locationX>
+        <locationY>3182</locationY>
+        <assignmentItems>
+            <assignToReference>ProjectResourcesCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>ProjectResource</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Selected_Project_Resources_Loop</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>CheckHours</name>
         <label>CheckHours</label>
-        <locationX>270</locationX>
-        <locationY>734</locationY>
+        <locationX>380</locationX>
+        <locationY>1550</locationY>
         <defaultConnector>
             <targetReference>RevenueStatus</targetReference>
         </defaultConnector>
@@ -21,7 +131,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>HoursScreen</targetReference>
+                <targetReference>Get_ProjectLineItems</targetReference>
             </connector>
             <label>HoursNotFulfilled</label>
         </rules>
@@ -29,7 +139,7 @@
     <decisions>
         <name>CheckStartDate</name>
         <label>CheckStartDate</label>
-        <locationX>512</locationX>
+        <locationX>622</locationX>
         <locationY>278</locationY>
         <defaultConnector>
             <targetReference>DefaultScreen</targetReference>
@@ -61,7 +171,7 @@
     <decisions>
         <name>FirstDecision</name>
         <label>FirstDecision</label>
-        <locationX>270</locationX>
+        <locationX>380</locationX>
         <locationY>398</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -75,7 +185,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>SquadLeadScreen</targetReference>
+                <targetReference>Copy_1_of_Get_ProjectLineItems</targetReference>
             </connector>
             <label>NoSquadLead</label>
         </rules>
@@ -96,10 +206,35 @@
         </rules>
     </decisions>
     <decisions>
+        <name>One_or_Many_Records_to_Update</name>
+        <label>One or Many Records to Update</label>
+        <locationX>182</locationX>
+        <locationY>2702</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Update_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Many</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Counter</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Selected_Project_Resources_Loop</targetReference>
+            </connector>
+            <label>Many</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>RevenueStatus</name>
         <label>RevenueStatus</label>
-        <locationX>270</locationX>
-        <locationY>1070</locationY>
+        <locationX>380</locationX>
+        <locationY>3830</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>NoRevenue</name>
@@ -130,6 +265,62 @@
     </formulas>
     <interviewLabel>ErrorsFlowProject {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ErrorsFlowProject</label>
+    <loops>
+        <name>Copy_1_of_Loop_ProjectLineItems</name>
+        <label>Copy 1 of Loop ProjectLineItems</label>
+        <locationX>160</locationX>
+        <locationY>638</locationY>
+        <collectionReference>Copy_1_of_Get_ProjectLineItems</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Copy_1_of_Assign_ProjectLineItemIds</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Copy_1_of_Get_ProjectResources</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Counter_Loop</name>
+        <label>Counter Loop</label>
+        <locationX>182</locationX>
+        <locationY>2366</locationY>
+        <collectionReference>SelectedProjectResources</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Counter</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>One_or_Many_Records_to_Update</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_ProjectLineItems</name>
+        <label>Loop ProjectLineItems</label>
+        <locationX>182</locationX>
+        <locationY>1790</locationY>
+        <collectionReference>Get_ProjectLineItems</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_ProjectLineItemIds</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_ProjectResources</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Selected_Project_Resources_Loop</name>
+        <label>Selected Project Resources Loop</label>
+        <locationX>50</locationX>
+        <locationY>2822</locationY>
+        <collectionReference>SelectedProjectResources</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Update_Record</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>UpdateProjectResourcesCollection</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -150,9 +341,93 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
+        <name>Copy_1_of_Get_ProjectLineItems</name>
+        <label>Copy 1 of Get ProjectLineItems</label>
+        <locationX>160</locationX>
+        <locationY>518</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Loop_ProjectLineItems</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Project__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Project.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ProjectLineItem__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_1_of_Get_ProjectResources</name>
+        <label>Copy 1 of Get ProjectResources</label>
+        <locationX>160</locationX>
+        <locationY>974</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_SelectProjectResourcesToUpdate</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ProjectLineItem__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ProjectLineItemsIdsCollection</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Project_Resource__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_ProjectLineItems</name>
+        <label>Get ProjectLineItems</label>
+        <locationX>182</locationX>
+        <locationY>1670</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_ProjectLineItems</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Project__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Project.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ProjectLineItem__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_ProjectResources</name>
+        <label>Get ProjectResources</label>
+        <locationX>182</locationX>
+        <locationY>2126</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SelectProjectResourcesToUpdate</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ProjectLineItem__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ProjectLineItemIdCollection</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Project_Resource__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Project</name>
         <label>Project</label>
-        <locationX>512</locationX>
+        <locationX>622</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -170,10 +445,253 @@
         <object>Project__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>Update_Project_Record</name>
+        <label>Update Project Record</label>
+        <locationX>160</locationX>
+        <locationY>1334</locationY>
+        <connector>
+            <targetReference>CheckHours</targetReference>
+        </connector>
+        <inputReference>Project</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateProjectResourceRecord</name>
+        <label>UpdateProjectResourceRecord</label>
+        <locationX>314</locationX>
+        <locationY>2942</locationY>
+        <connector>
+            <targetReference>Copy_1_of_Project_Resources_Updated_Screen</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>SelectedProjectResource.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>EndDate__c</field>
+            <value>
+                <elementReference>Copy_1_of_PickedEndDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StartDate__c</field>
+            <value>
+                <elementReference>Copy_1_of_PickedStartDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Project_Resource__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateProjectResourcesCollection</name>
+        <label>UpdateProjectResourcesCollection</label>
+        <locationX>50</locationX>
+        <locationY>3398</locationY>
+        <connector>
+            <targetReference>ProjectResourcesUpdatedScreen</targetReference>
+        </connector>
+        <inputReference>ProjectResourcesCollection</inputReference>
+    </recordUpdates>
+    <screens>
+        <name>Copy_1_of_Project_Resources_Updated_Screen</name>
+        <label>Copy 1 of Project Resources Updated Screen</label>
+        <locationX>314</locationX>
+        <locationY>3062</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>RevenueStatus</targetReference>
+        </connector>
+        <fields>
+            <name>Copy_1_of_ProjectResourcesUpdatedMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;&lt;em&gt;The selected resource has been updated.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_1_of_SelectProjectResourcesToUpdate</name>
+        <label>Copy 1 of SelectProjectResourcesToUpdate</label>
+        <locationX>160</locationX>
+        <locationY>1094</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Assign_Project_Squad_Lead</targetReference>
+        </connector>
+        <fields>
+            <name>NoSquadLeadMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(189, 26, 26); font-size: 18px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;em&gt;Please add a &lt;u&gt;Squad Lead&lt;/u&gt; to your project.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Copy_1_of_SelectResourcerecordstoupdate</name>
+            <dataTypeMappings>
+                <typeName>T</typeName>
+                <typeValue>Project_Resource__c</typeValue>
+            </dataTypeMappings>
+            <extensionName>flowruntime:datatable</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Select a Squad Lead</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectionMode</name>
+                <value>
+                    <stringValue>SINGLE_SELECT</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>minRowSelection</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>tableData</name>
+                <value>
+                    <elementReference>Copy_1_of_Get_ProjectResources</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>columns</name>
+                <value>
+                    <stringValue>[{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-c347&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Project Resource Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Role__c&quot;,&quot;guid&quot;:&quot;column-5a67&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Role&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;StartDate__c&quot;,&quot;guid&quot;:&quot;column-9966&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;StartDate&quot;,&quot;type&quot;:&quot;date&quot;},{&quot;apiName&quot;:&quot;EndDate__c&quot;,&quot;guid&quot;:&quot;column-c368&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:3,&quot;label&quot;:&quot;EndDate&quot;,&quot;type&quot;:&quot;date&quot;}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>maxRowSelection</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>shouldDisplayLabel</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>ProjectSquadLead</assignToReference>
+                <name>firstSelectedRow</name>
+            </outputParameters>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_1_of_Update_Record</name>
+        <label>Copy 1 of Update Record</label>
+        <locationX>314</locationX>
+        <locationY>2822</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>UpdateProjectResourceRecord</targetReference>
+        </connector>
+        <fields>
+            <name>Copy_1_of_Update_Record_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Copy_1_of_Update_Record_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Copy_1_of_ResourceName</name>
+                    <fieldText>&lt;p&gt;{!SelectedProjectResource.Name}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Copy_1_of_Update_Record_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Copy_1_of_ResourceRole</name>
+                    <fieldText>&lt;p&gt;{!SelectedProjectResource.Role__c}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Copy_1_of_Update_Record_Section1_Column3</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Copy_1_of_PickedStartDate</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>SelectedProjectResource.StartDate__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Start Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Copy_1_of_Update_Record_Section1_Column4</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Copy_1_of_PickedEndDate</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>SelectedProjectResource.EndDate__c</elementReference>
+                    </defaultValue>
+                    <fieldText>End Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;You can&apos;t assign less hours than the resource has been assigned previously&lt;/p&gt;</errorMessage>
+                        <formulaExpression>{!Copy_1_of_PickedEndDate} &gt;={!SelectedProjectResource.EndDate__c}</formulaExpression>
+                    </validationRule>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <screens>
         <name>DefaultScreen</name>
         <label>DefaultScreen</label>
-        <locationX>754</locationX>
+        <locationX>864</locationX>
         <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -189,8 +707,8 @@
     <screens>
         <name>ExceedingAmountScreen</name>
         <label>ExceedingAmountScreen</label>
-        <locationX>138</locationX>
-        <locationY>1190</locationY>
+        <locationX>248</locationX>
+        <locationY>3950</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -203,45 +721,192 @@
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>HoursScreen</name>
-        <label>HoursScreen</label>
-        <locationX>138</locationX>
-        <locationY>854</locationY>
-        <allowBack>true</allowBack>
+        <name>ProjectResourcesUpdatedScreen</name>
+        <label>Project Resources Updated Screen</label>
+        <locationX>50</locationX>
+        <locationY>3518</locationY>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
             <targetReference>RevenueStatus</targetReference>
         </connector>
         <fields>
-            <name>HoursNotFulfilledMessage</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px; color: rgb(189, 26, 26);&quot;&gt;The amount of work hours is not fulfilled, please add more resources or assign more hours to the existing resources.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <name>ProjectResourcesUpdatedMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;&lt;em&gt;The selected resources have been updated.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>SquadLeadScreen</name>
-        <label>SquadLeadScreen</label>
-        <locationX>50</locationX>
-        <locationY>518</locationY>
-        <allowBack>true</allowBack>
+        <name>SelectProjectResourcesToUpdate</name>
+        <label>SelectProjectResourcesToUpdate</label>
+        <locationX>182</locationX>
+        <locationY>2246</locationY>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>CheckHours</targetReference>
+            <targetReference>Counter_Loop</targetReference>
         </connector>
         <fields>
-            <name>NoSquadLeadMessage</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(189, 26, 26); font-size: 18px;&quot;&gt;Please add a &lt;/span&gt;&lt;em style=&quot;color: rgb(189, 26, 26); font-size: 18px;&quot;&gt;&lt;u&gt;Squad Lead&lt;/u&gt;&lt;/em&gt;&lt;span style=&quot;color: rgb(189, 26, 26); font-size: 18px;&quot;&gt; to your project.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <name>HoursNotFulfilledMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); font-size: 18px; color: rgb(189, 26, 26);&quot;&gt;&lt;em&gt;The amount of work hours is not fulfilled, please add more resources or assign more hours to the existing resources.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>SelectResourcerecordstoupdate</name>
+            <dataTypeMappings>
+                <typeName>T</typeName>
+                <typeValue>Project_Resource__c</typeValue>
+            </dataTypeMappings>
+            <extensionName>flowruntime:datatable</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Select Resource records to update</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectionMode</name>
+                <value>
+                    <stringValue>MULTI_SELECT</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>minRowSelection</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>tableData</name>
+                <value>
+                    <elementReference>Get_ProjectResources</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>columns</name>
+                <value>
+                    <stringValue>[{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-c347&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Project Resource Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Role__c&quot;,&quot;guid&quot;:&quot;column-5a67&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Role&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;StartDate__c&quot;,&quot;guid&quot;:&quot;column-9966&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;StartDate&quot;,&quot;type&quot;:&quot;date&quot;},{&quot;apiName&quot;:&quot;EndDate__c&quot;,&quot;guid&quot;:&quot;column-c368&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:3,&quot;label&quot;:&quot;EndDate&quot;,&quot;type&quot;:&quot;date&quot;}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>SelectedProjectResources</assignToReference>
+                <name>selectedRows</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>SelectedProjectResource</assignToReference>
+                <name>firstSelectedRow</name>
+            </outputParameters>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
+    <screens>
+        <name>Update_Record</name>
+        <label>Update Record</label>
+        <locationX>138</locationX>
+        <locationY>2942</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Assign_Dates_to_Resource</targetReference>
+        </connector>
+        <fields>
+            <name>Update_Record_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Update_Record_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>ResourceName</name>
+                    <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;&lt;em&gt;{!Selected_Project_Resources_Loop.Name}&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Update_Record_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>ResourceRole</name>
+                    <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;&lt;em&gt;{!Selected_Project_Resources_Loop.Role__c}&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Update_Record_Section1_Column3</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>PickedStartDate</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>Selected_Project_Resources_Loop.StartDate__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Start Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Update_Record_Section1_Column4</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>PickedEndDate</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>Selected_Project_Resources_Loop.EndDate__c</elementReference>
+                    </defaultValue>
+                    <fieldText>End Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;You can&apos;t assign less hours than the resource has been assigned previously&lt;/p&gt;</errorMessage>
+                        <formulaExpression>{!PickedEndDate} &gt;={!Selected_Project_Resources_Loop.EndDate__c}</formulaExpression>
+                    </validationRule>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
-        <locationX>386</locationX>
+        <locationX>496</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Project</targetReference>
@@ -260,10 +925,72 @@
         </value>
     </variables>
     <variables>
+        <name>currentItemFromSourceCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Project_Resource__c</objectType>
+    </variables>
+    <variables>
+        <name>ProjectLineItemIdCollection</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ProjectLineItemsIdsCollection</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ProjectResource</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Project_Resource__c</objectType>
+    </variables>
+    <variables>
+        <name>ProjectResourcesCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Project_Resource__c</objectType>
+    </variables>
+    <variables>
+        <name>ProjectSquadLead</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Project_Resource__c</objectType>
+    </variables>
+    <variables>
         <name>RecordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>SelectedProjectResource</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Project_Resource__c</objectType>
+    </variables>
+    <variables>
+        <name>SelectedProjectResources</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Project_Resource__c</objectType>
     </variables>
 </Flow>

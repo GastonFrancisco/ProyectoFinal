@@ -38,5 +38,5 @@ public with sharing class GetUsers {
         }
         a.add(availableUsers);
         return a;
-    } 
+    }
 }
