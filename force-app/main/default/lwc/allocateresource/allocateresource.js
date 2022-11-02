@@ -1,6 +1,8 @@
 import { LightningElement, wire, api } from 'lwc';
+import {refreshApex} from '@salesforce/apex';
 import getProjectWrapper from '@salesforce/apex/GetRolesWithUsers.getProjectWrapper';
-// import metodoX from '@salesforce/apex/GetRolesWithUsers.metodoX';
+import metodoX from '@salesforce/apex/GetRolesWithUsers.metodoX';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class Allocateresource extends LightningElement {
     @api recordId;
@@ -27,7 +29,7 @@ export default class Allocateresource extends LightningElement {
         }
     }
 
-    handleSelected(event){
+    handleSelected(event) {
         let realKey;
         let keyFakeArray = Object.keys(event.detail);
         keyFakeArray.forEach(key => realKey = key);
@@ -39,59 +41,42 @@ export default class Allocateresource extends LightningElement {
         console.log(!event.detail[realKey].includes(undefined));
         console.log(!event.detail[realKey].includes(null));
 
-        if(event.detail[realKey][0] == null && event.detail[realKey][1] == null){
+        if (event.detail[realKey][0] == null && event.detail[realKey][1] == null) {
             delete this.resourcesValues[realKey];
             console.log(JSON.parse(JSON.stringify(this.resourcesValues)))
         }
-        
-        if(this.disable == false && (event.detail[realKey].includes(undefined) || event.detail[realKey].includes(null))){
+
+        if (this.disable == false && (event.detail[realKey].includes(undefined) || event.detail[realKey].includes(null))) {
             this.disable = true
-        } else if(this.disable == true && (!event.detail[realKey].includes(undefined)) && (!event.detail[realKey].includes(null))){
+        } else if (this.disable == true && (!event.detail[realKey].includes(undefined)) && (!event.detail[realKey].includes(null))) {
             this.disable = false;
         }
-            
-        
-        // console.log(JSON.parse(JSON.stringify(this.resourcesValues)))
-        // if(this.disable == true){
-        //     let arrayKeys = Object.keys( this.resourcesValues);
-        //     console.log('Linea 39: ' + !event.detail[realKey].includes(undefined))
 
-        //     if((!event.detail[realKey].includes(undefined)) && arrayKeys.length >= 1){
-        //         console.log('Linea 42 ' + event.detail[realKey][0])
-        //         console.log('Linea 43: ' + event.detail[realKey].length == 2 && arrayKeys.length >= 1)
-        //         this.disable = false;
-        //     }
-        // } else if(event.detail[realKey].includes(null)){
-        //     this.disable = true
-        // }
-        // console.log('Linea 49 ' + event.detail[realKey][0])
+
+
 
     }
 
-    handleSubmit(){
-    //     metodoX({projectId: this.recordId, resourcesMap : JSON.stringify(this.submitAnswers)})
-    //     .then((status)=>{
-    //         if(status == 'Success'){
-    //             this.dispatchEvent(new ShowToastEvent({
-    //                 title: 'WOOHOO!',
-    //                 message: 'Youve got a shiny new badge',
-    //                 variant: 'success'
-    //             }));
-    //         }else{
-    //             this.dispatchEvent(new ShowToastEvent({
-    //                 title: 'Try again',
-    //                 message: 'Youve got one or more wrong answers',
-    //                 variant: 'error'
-    //             }));
-    //         }
-    //     })
-    //     .catch((error) =>{
-    //         console.log(error);
-    //         this.dispatchEvent(new ShowToastEvent({
-    //             title: 'Error',
-    //             message: error.message,
-    //             variant: 'error'
-    //         }));
-    //     })  
+    handleSubmit() {
+        console.log(' test1' + JSON.stringify(this.resourcesValues));
+        metodoX({ projectId: this.recordId, resourcesMap: JSON.stringify(this.resourcesValues) })
+            .then(() => {
+                console.log('entre')
+                this.dispatchEvent(new ShowToastEvent({
+                        title: 'Resource/s assigned!',
+                        variant: 'success'
+                    }));
+                this.roles = [];
+                refreshApex(this.info)
+            })
+            .catch((error) => {
+                console.log('entre catch')
+                console.log(error);
+                this.dispatchEvent(new ShowToastEvent({
+                    title: 'Error',
+                    message: error.message,
+                    variant: 'error'
+                }));
+            })
     }
 }
