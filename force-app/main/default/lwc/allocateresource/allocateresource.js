@@ -56,9 +56,9 @@ export default class Allocateresource extends LightningElement {
     }
 
     handleSubmit() {
-        metodoX({ projectId: this.recordId, resourcesMap: JSON.stringify(this.submitAnswers) })
-
-        .then((status) => {
+        console.log(' test1' + JSON.stringify(this.resourcesValues));
+        metodoX({ projectId: this.recordId, resourcesMap: JSON.stringify(this.resourcesValues) })
+            .then((status) => {
                 console.log('entre')
                 if (status == 'Success') {
                     this.dispatchEvent(new ShowToastEvent({
