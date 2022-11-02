@@ -10,6 +10,7 @@
         <connector>
             <targetReference>RevenueStatus</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailBody</name>
             <value>
@@ -36,6 +37,7 @@
         <locationY>1308</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailBody</name>
             <value>
@@ -65,6 +67,7 @@
         <connector>
             <targetReference>CheckHours</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailBody</name>
             <value>
@@ -242,6 +245,7 @@
             <label>NoRevenue</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <formulas>
         <name>EndDate</name>
         <dataType>Date</dataType>
