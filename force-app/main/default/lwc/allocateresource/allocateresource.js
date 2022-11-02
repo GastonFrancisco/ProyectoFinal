@@ -1,6 +1,6 @@
 import { LightningElement, wire, api } from 'lwc';
 import getProjectWrapper from '@salesforce/apex/GetRolesWithUsers.getProjectWrapper';
-// import metodoX from '@salesforce/apex/GetRolesWithUsers.metodoX';
+import metodoX from '@salesforce/apex/GetRolesWithUsers.metodoX';
 
 export default class Allocateresource extends LightningElement {
     @api recordId;
@@ -57,7 +57,9 @@ export default class Allocateresource extends LightningElement {
 
     handleSubmit() {
         metodoX({ projectId: this.recordId, resourcesMap: JSON.stringify(this.submitAnswers) })
-            .then((status) => {
+
+        .then((status) => {
+                console.log('entre')
                 if (status == 'Success') {
                     this.dispatchEvent(new ShowToastEvent({
                         title: 'WOOHOO!',
@@ -73,6 +75,7 @@ export default class Allocateresource extends LightningElement {
                 }
             })
             .catch((error) => {
+                console.log('entre catch')
                 console.log(error);
                 this.dispatchEvent(new ShowToastEvent({
                     title: 'Error',
