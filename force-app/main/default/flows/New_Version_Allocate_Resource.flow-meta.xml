@@ -87,6 +87,7 @@
             <label>False</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <formulas>
         <name>ProjectEndDate</name>
         <dataType>Date</dataType>

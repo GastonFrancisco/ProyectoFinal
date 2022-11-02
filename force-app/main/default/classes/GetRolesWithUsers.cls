@@ -1,4 +1,37 @@
 public with sharing class GetRolesWithUsers {
+    @AuraEnabled(cacheable=true)
+    public static void metodoX ( Id projectId , string resourcesMap  ) {
+ 
+    Map<Id,list<date>> resourcebymap = (Map<Id, list<date>>)JSON.deserializeStrict( resourcesMap, Map<Id, list<date>>.class);
+     Project__c proyect =[SELECT name,(SELECT Role__c,Id FROM ProjecstLineItem__r WHERE Project__c =: projectId) FROM Project__c
+      WHERE Id =: projectId];
+    
+     map<string,id> RolbyPliId =new map<string,id>();
+         for(ProjectLineItem__c PLI : proyect.ProjecstLineItem__r){
+             RolbyPliId.put(PLI.Role__c, PLI.Id);
+         }
+ 
+    
+     list<user> ListResource=[SELECT Role__c,Name FROM user WHERE Id in: resourcebymap.keySet()];
+ 
+         list <Project_Resource__c> listProyectResource = new list <Project_Resource__c>();
+ 
+         for (user resource : ListResource){
+             
+             listProyectResource.add(new Project_Resource__c (
+                 Resource__c = resource.Id,
+                 name = resource.name,
+                 projectLineItem__c= RolbyPliId.get(resource.role__c),
+                 StartDate__c=resourcebymap.get(resource.Id)[0],
+                 endDate__c=resourcebymap.get(resource.Id)[1],
+                 role__c=resource.role__c
+             ));
+         }
+ 
+         insert listProyectResource;
+         
+     }
+
     public class ProjectWrapper{
         @AuraEnabled
         public List<ProjectLineItem__c> roles = new List<ProjectLineItem__c>(); 
