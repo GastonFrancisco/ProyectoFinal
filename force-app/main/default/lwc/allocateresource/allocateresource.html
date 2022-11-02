@@ -14,14 +14,12 @@
                     <br>
                     <template if:true={rol.resource}>
                         <template for:each={rol.resource} for:item="resource">
-                            <c-resource key={resource.Id} resource={resource} onrefresh={refresh} ></c-resource>
+                            <c-resource key={resource.Id} resource={resource} onrefresh={refresh} onselected={handleSelected}></c-resource>
                         </template>
-
-
-</template>
-</lightning-card>
-</template>
-<lightning-button class="slds-button_font" icon-name="utility:success" label="Assigned" onclick={completeTask}></lightning-button>
-</template>
-</lightning-card>
+                    </template>
+                </lightning-card>
+            </template>
+            <lightning-button class="slds-button_font" icon-name="utility:success" label="Assigned" onclick={handleSubmit} disabled={disable}></lightning-button>
+        </template>
+    </lightning-card>
 </template>
