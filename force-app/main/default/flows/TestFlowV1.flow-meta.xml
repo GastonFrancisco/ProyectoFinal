@@ -20,7 +20,7 @@
     <decisions>
         <name>IsSquadLead</name>
         <label>IsSquadLead?</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>398</locationY>
         <defaultConnector>
             <targetReference>NotSquadLead</targetReference>
@@ -87,6 +87,9 @@
         <label>CreateResourceTask</label>
         <locationX>50</locationX>
         <locationY>1214</locationY>
+        <faultConnector>
+            <targetReference>FaultScreen</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>AproximateHours__c</field>
             <value>
@@ -115,6 +118,12 @@
             <field>OwnerId</field>
             <value>
                 <elementReference>TaskProjectResource.Resource__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Project_Resource__c</field>
+            <value>
+                <elementReference>TaskProjectResource.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -195,7 +204,7 @@
     <recordLookups>
         <name>GetUser</name>
         <label>GetUser</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -216,7 +225,7 @@
     <recordLookups>
         <name>ProjectRecord</name>
         <label>ProjectRecord</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -385,9 +394,25 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>FaultScreen</name>
+        <label>FaultScreen</label>
+        <locationX>314</locationX>
+        <locationY>1334</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>FaultMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>NotSquadLead</name>
         <label>NotSquadLead</label>
-        <locationX>314</locationX>
+        <locationX>578</locationX>
         <locationY>518</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -401,7 +426,7 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>56</locationX>
+        <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>ProjectRecord</targetReference>

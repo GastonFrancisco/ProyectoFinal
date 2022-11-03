@@ -1,7 +1,7 @@
 public with sharing class GetRolesWithUsers {
     @AuraEnabled
     public static void metodoX ( Id projectId , string resourcesMap  ) {
-    system.debug(resourcesMap + ' '+ projectId );
+    system.debug(resourcesMap + ' ' + projectId );
     Map<Id,list<date>> resourcebymap = (Map<Id, list<date>>)JSON.deserializeStrict( resourcesMap, Map<Id, list<date>>.class);
      Project__c proyect =[SELECT name,(SELECT Role__c,Id FROM ProjecstLineItem__r WHERE Project__c =: projectId) FROM Project__c
       WHERE Id =: projectId];
@@ -99,12 +99,13 @@ public with sharing class GetRolesWithUsers {
                     Date iterationStartDate = proResource.StartDate__c;
                     Date iterationEndDate = proResource.EndDate__c;
 
-                    if(currentIterationIndex == 0 && startDate.daysBetween(iterationStartDate) >= 1){
-
-                        if(resourcesByRole.containsKey(resource.Role__c)){
-                            resourcesByRole.get(resource.Role__c).add(resource);
-                        } else{
-                            resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                    if(currentIterationIndex == 0 && startDate.daysBetween(iterationStartDate) > 1){
+                        if(getWeekDays(startDate, iterationStartDate) >= 1){
+                            if(resourcesByRole.containsKey(resource.Role__c)){
+                                resourcesByRole.get(resource.Role__c).add(resource);
+                            } else{
+                                resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                            }
                         }
                     } else if(currentIterationIndex != 0 && (currentIterationIndex + 1) != resource.Project_Resources__r.size()){
                         Integer previousIterationIndex = resource.Project_Resources__r.indexOf(proResource);
@@ -112,11 +113,13 @@ public with sharing class GetRolesWithUsers {
 
                         Date previousIterationEndDate = resource.Project_Resources__r[previousIterationIndex].EndDate__c;
 
-                        if(previousIterationEndDate.daysBetween(iterationStartDate) >= 1){
-                            if(resourcesByRole.containsKey(resource.Role__c)){
-                                resourcesByRole.get(resource.Role__c).add(resource);
-                            } else{
-                                resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                        if(previousIterationEndDate.daysBetween(iterationStartDate) > 1){
+                            if((getWeekDays(previousIterationEndDate, iterationStartDate) - 1) >= 1){
+                                if(resourcesByRole.containsKey(resource.Role__c)){
+                                    resourcesByRole.get(resource.Role__c).add(resource);
+                                } else{
+                                    resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                                }
                             }
                         }
                     } else if((currentIterationIndex + 1) == resource.Project_Resources__r.size()){
@@ -125,11 +128,13 @@ public with sharing class GetRolesWithUsers {
 
                         Date previousIterationEndDate = resource.Project_Resources__r[previousIterationIndex].EndDate__c;
 
-                        if(previousIterationEndDate.daysBetween(iterationStartDate) >= 1 || iterationEndDate.daysBetween(endDate) >= 1){
-                            if(resourcesByRole.containsKey(resource.Role__c)){
-                                resourcesByRole.get(resource.Role__c).add(resource);
-                            } else{
-                                resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                        if(previousIterationEndDate.daysBetween(iterationStartDate) > 1 || iterationEndDate.daysBetween(endDate) > 1){
+                            if((getWeekDays(previousIterationEndDate, iterationStartDate) - 1) >= 1 ||getWeekDays(iterationEndDate, endDate) >= 1){
+                                if(resourcesByRole.containsKey(resource.Role__c)){
+                                    resourcesByRole.get(resource.Role__c).add(resource);
+                                } else{
+                                    resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                                }
                             }
                         }
                     }
@@ -138,5 +143,21 @@ public with sharing class GetRolesWithUsers {
         }
 
         return resourcesByRole;
+    }
+
+    public static Integer getWeekDays(Date startDate, Date iterationDate){
+        Date initStartDate = startDate;
+        DateTime formattedInitDate;
+        String dayOfWeek;
+        Integer realDaysBetween = 0;
+        for(Integer i = 0; i < startDate.daysBetween(iterationDate); i++){
+            initStartDate = initStartDate.addDays(1);
+            formattedInitDate = (DateTime)initStartDate;
+            dayOfWeek = formattedInitDate.format('E');
+            if(dayOfWeek != 'Sat' && dayOfWeek != 'Sun'){
+                realDaysBetween +=1;
+            }
+        }
+        return realDaysBetween - 1;
     }
 }

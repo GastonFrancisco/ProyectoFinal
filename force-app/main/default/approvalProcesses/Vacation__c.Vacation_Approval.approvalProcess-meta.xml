@@ -30,7 +30,7 @@
         <label>Step 1</label>
         <name>Step_1</name>
     </approvalStep>
-    <emailTemplate>unfiled$public/MarketingProductInquiryResponse</emailTemplate>
+    <emailTemplate>unfiled$public/Vacation_Email_Template</emailTemplate>
     <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

@@ -1,6 +1,8 @@
 import { LightningElement, wire, api } from 'lwc';
+import {refreshApex} from '@salesforce/apex';
 import getProjectWrapper from '@salesforce/apex/GetRolesWithUsers.getProjectWrapper';
 import metodoX from '@salesforce/apex/GetRolesWithUsers.metodoX';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class Allocateresource extends LightningElement {
     @api recordId;
@@ -34,7 +36,6 @@ export default class Allocateresource extends LightningElement {
 
         this.resourcesValues[realKey] = event.detail[realKey]
 
-
         console.log(event.detail[realKey]);
         console.log(!event.detail[realKey].includes(undefined));
         console.log(!event.detail[realKey].includes(null));
@@ -49,39 +50,29 @@ export default class Allocateresource extends LightningElement {
         } else if (this.disable == true && (!event.detail[realKey].includes(undefined)) && (!event.detail[realKey].includes(null))) {
             this.disable = false;
         }
-
-
-
-
     }
 
     handleSubmit() {
-        console.log(' test1' + JSON.stringify(this.resourcesValues));
-        metodoX({ projectId: this.recordId, resourcesMap: JSON.stringify(this.resourcesValues) })
-            .then((status) => {
-                console.log('entre')
-                if (status == 'Success') {
-                    this.dispatchEvent(new ShowToastEvent({
-                        title: 'WOOHOO!',
-                        message: 'Youve got a shiny new badge',
-                        variant: 'success'
-                    }));
-                } else {
-                    this.dispatchEvent(new ShowToastEvent({
-                        title: 'Try again',
-                        message: 'Youve got one or more wrong answers',
-                        variant: 'error'
-                    }));
-                }
-            })
-            .catch((error) => {
-                console.log('entre catch')
-                console.log(error);
-                this.dispatchEvent(new ShowToastEvent({
-                    title: 'Error',
-                    message: error.message,
-                    variant: 'error'
+        console.log(JSON.stringify(this.resourcesValues));
+        metodoX({ projectId: this.recordId, resourcesMap: JSON.stringify(this.resourcesValues)})
+        .then(() => {
+            console.log('entre')
+            this.dispatchEvent(new ShowToastEvent({
+                    title: 'Resource/s assigned!',
+                    variant: 'success'
                 }));
-            })
+            this.roles = [];
+            this.resourcesValues = {}
+            refreshApex(this.info)
+        })
+        .catch((error) => {
+            console.log('entre catch')
+            console.log(error);
+            this.dispatchEvent(new ShowToastEvent({
+                title: 'Error',
+                message: error.message,
+                variant: 'error'
+            }));
+        })
     }
 }

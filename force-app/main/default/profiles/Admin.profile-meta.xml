@@ -17,6 +17,10 @@
         <apexClass>GetUsers</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>ProjectResourceTriggerHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -281,6 +285,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>ResourceTask__c.ProjectName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ResourceTask__c.Project_Resource__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

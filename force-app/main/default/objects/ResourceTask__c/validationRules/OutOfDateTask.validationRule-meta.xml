@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OutOfDateTask</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(  OR(StartDate__c &lt; Project_Resource__r.StartDate__c, EndDate__c &gt; Project_Resource__r.EndDate__c )  , true, false)</errorConditionFormula>
+    <errorMessage>Can&apos;t assign tasks out of the dates where the resource was assigned</errorMessage>
+</ValidationRule>

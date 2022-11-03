@@ -6,6 +6,10 @@
 	</types>
 	<types>
 		<members>*</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>ApprovalProcess</name>
 	</types>
 	<types>
@@ -55,6 +59,7 @@
 		<members>ResourceTask__c.InProgress__c</members>
 		<members>ResourceTask__c.IsCompleted__c</members>
 		<members>ResourceTask__c.ProjectName__c</members>
+		<members>ResourceTask__c.Project_Resource__c</members>
 		<members>ResourceTask__c.Project__c</members>
 		<members>ResourceTask__c.Rateph__c</members>
 		<members>ResourceTask__c.RegisteredHours__c</members>
@@ -111,6 +116,7 @@
 		<members>Create_Project_ProjectLineItem</members>
 		<members>Delete_Vacations_Screen</members>
 		<members>ErrorsFlowProject</members>
+		<members>InProgress_Completed_Project_Trigger_Flow</members>
 		<members>New_Version_Allocate_Resource</members>
 		<members>ProjectCompletedTasks</members>
 		<members>ProjectTaskCount</members>

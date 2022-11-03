@@ -11,7 +11,7 @@
 }
 
 .slds-box {
-    border: medium double rgb(94, 94, 94);
+    border: medium double rgb(243, 243, 243);
     border-collapse:separate;
     border-spacing: 15px 50px;
 }

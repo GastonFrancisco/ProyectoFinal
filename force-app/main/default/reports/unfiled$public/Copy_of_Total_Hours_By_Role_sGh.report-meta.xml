@@ -9,15 +9,20 @@
             <axisBinding>y</axisBinding>
             <column>Project__c.ProjecstLineItem__r$Quantity__c</column>
         </chartSummaries>
-        <chartType>Donut</chartType>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Project__c.ProjecstLineItem__r$CoveredHours__c</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
+        <expandOthers>true</expandOthers>
         <groupingColumn>Project__c.ProjecstLineItem__r$Role__c</groupingColumn>
         <legendPosition>Bottom</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
-        <showTotal>true</showTotal>
+        <showTotal>false</showTotal>
         <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
@@ -29,6 +34,10 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Project__c.ProjecstLineItem__r$Quantity__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Project__c.ProjecstLineItem__r$CoveredHours__c</field>
     </columns>
     <format>Summary</format>
     <groupingsDown>
