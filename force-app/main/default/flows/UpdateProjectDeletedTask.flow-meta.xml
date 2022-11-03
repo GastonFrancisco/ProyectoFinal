@@ -26,7 +26,6 @@
             <label>IsCompleted</label>
         </rules>
     </decisions>
-    <environments>Default</environments>
     <formulas>
         <name>LessCompletedTasksFormula</name>
         <dataType>Number</dataType>

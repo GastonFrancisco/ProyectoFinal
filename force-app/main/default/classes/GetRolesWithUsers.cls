@@ -1,8 +1,7 @@
 public with sharing class GetRolesWithUsers {
-    
     @AuraEnabled
     public static void metodoX ( Id projectId , string resourcesMap  ) {
- 
+    system.debug(resourcesMap + ' ' + projectId );
     Map<Id,list<date>> resourcebymap = (Map<Id, list<date>>)JSON.deserializeStrict( resourcesMap, Map<Id, list<date>>.class);
      Project__c proyect =[SELECT name,(SELECT Role__c,Id FROM ProjecstLineItem__r WHERE Project__c =: projectId) FROM Project__c
       WHERE Id =: projectId];

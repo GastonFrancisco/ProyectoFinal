@@ -7,7 +7,6 @@
         <locationY>1247</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailBody</name>
             <value>
@@ -60,7 +59,6 @@
             <targetReference>Loop_PLI</targetReference>
         </connector>
     </assignments>
-    <environments>Default</environments>
     <interviewLabel>Coworker Email Alert {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Coworker Email Alert</label>
     <loops>

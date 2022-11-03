@@ -24,7 +24,6 @@
                     <value>3</value>
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
-                <identifier>force_highlightsPanel</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -42,7 +41,6 @@
                     <value>ErrorsFlowProject</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
-                <identifier>flowruntime_interview2</identifier>
                 <visibilityRule>
                     <booleanFilter>(1 OR 3) AND 2</booleanFilter>
                     <criteria>
@@ -82,7 +80,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListContainer</componentName>
-                <identifier>force_relatedListContainer</identifier>
             </componentInstance>
         </itemInstances>
         <name>relatedTabContent</name>
@@ -92,7 +89,6 @@
         <itemInstances>
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
-                <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
         <name>detailTabContent</name>
@@ -141,7 +137,6 @@
                     <value>TestFlowV1</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
-                <identifier>flowruntime_interview3</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.Status__c}</leftValue>
@@ -174,7 +169,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
-                <identifier>flexipage_reportChart</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -200,7 +194,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
-                <identifier>flexipage_reportChart2</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-splegl26vh</name>
@@ -218,7 +211,6 @@
                     <value>Standard.Tab.relatedLists</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>relatedListsTab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -236,7 +228,6 @@
                     <value>Standard.Tab.detail</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -250,7 +241,6 @@
                     <value>Resource Assigment</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -264,7 +254,6 @@
                     <value>Task</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
         <name>maintabs</name>
@@ -278,7 +267,6 @@
                     <value>maintabs</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -303,7 +291,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
-                <identifier>flexipage_reportChart3</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>
@@ -332,7 +319,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
-                <identifier>flexipage_reportChart7</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -358,7 +344,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
-                <identifier>flexipage_reportChart6</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -384,7 +369,6 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
-                <identifier>flexipage_reportChart5</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>
