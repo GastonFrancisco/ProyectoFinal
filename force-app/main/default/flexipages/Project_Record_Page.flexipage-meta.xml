@@ -24,6 +24,7 @@
                     <value>3</value>
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
+                <identifier>sfdxHardisId30</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -41,6 +42,7 @@
                     <value>ErrorsFlowProject</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
+                <identifier>sfdxHardisId48</identifier>
                 <visibilityRule>
                     <booleanFilter>(1 OR 3) AND 2</booleanFilter>
                     <criteria>
@@ -80,6 +82,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListContainer</componentName>
+                <identifier>sfdxHardisId32</identifier>
             </componentInstance>
         </itemInstances>
         <name>relatedTabContent</name>
@@ -89,6 +92,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
+                <identifier>sfdxHardisId34</identifier>
             </componentInstance>
         </itemInstances>
         <name>detailTabContent</name>
@@ -98,6 +102,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>allocateresource</componentName>
+                <identifier>sfdxHardisId50</identifier>
                 <visibilityRule>
                     <booleanFilter>1 AND (2 OR 3)</booleanFilter>
                     <criteria>
@@ -137,6 +142,7 @@
                     <value>TestFlowV1</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
+                <identifier>sfdxHardisId49</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.Status__c}</leftValue>
@@ -169,6 +175,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
+                <identifier>sfdxHardisId36</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -194,6 +201,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
+                <identifier>sfdxHardisId37</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-splegl26vh</name>
@@ -211,6 +219,7 @@
                     <value>Standard.Tab.relatedLists</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>sfdxHardisId38</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -228,6 +237,7 @@
                     <value>Standard.Tab.detail</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>sfdxHardisId39</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -241,6 +251,7 @@
                     <value>Resource Assigment</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>sfdxHardisId40</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -254,6 +265,7 @@
                     <value>Task</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>sfdxHardisId41</identifier>
             </componentInstance>
         </itemInstances>
         <name>maintabs</name>
@@ -267,6 +279,7 @@
                     <value>maintabs</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
+                <identifier>sfdxHardisId42</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -291,6 +304,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
+                <identifier>sfdxHardisId44</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>
@@ -319,6 +333,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
+                <identifier>sfdxHardisId45</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -344,6 +359,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
+                <identifier>sfdxHardisId46</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -369,6 +385,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:reportChart</componentName>
+                <identifier>sfdxHardisId47</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

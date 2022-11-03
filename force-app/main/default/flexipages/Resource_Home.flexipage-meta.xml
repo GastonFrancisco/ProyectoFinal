@@ -12,11 +12,13 @@
                     <value>ResourceTasks</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
+                <identifier>sfdxHardisId54</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentName>projectsComponent</componentName>
+                <identifier>sfdxHardisId56</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-9e1def87-ae7a-4470-bedd-05fe4d339dc7</name>
@@ -34,6 +36,7 @@
                     <value>Delete_Vacations_Screen</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
+                <identifier>sfdxHardisId55</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -47,6 +50,7 @@
                     <value>Request_Out_of_Office</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
+                <identifier>sfdxHardisId58</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-da6da05c-f203-4a08-9251-292d34f70738</name>
@@ -68,6 +72,7 @@
                     <value>Tasks</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>sfdxHardisId60</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -81,6 +86,7 @@
                     <value>Vacation Request</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>sfdxHardisId61</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-c1309521-c497-4ec3-a768-e8689aabeea2</name>
@@ -94,6 +100,7 @@
                     <value>Facet-c1309521-c497-4ec3-a768-e8689aabeea2</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
+                <identifier>sfdxHardisId62</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>

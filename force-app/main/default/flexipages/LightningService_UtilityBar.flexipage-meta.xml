@@ -5,11 +5,13 @@
         <itemInstances>
             <componentInstance>
                 <componentName>console:history</componentName>
+                <identifier>sfdxHardisId6</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentName>notes:utilityBarNoteList</componentName>
+                <identifier>sfdxHardisId8</identifier>
             </componentInstance>
         </itemInstances>
         <name>utilityItems</name>

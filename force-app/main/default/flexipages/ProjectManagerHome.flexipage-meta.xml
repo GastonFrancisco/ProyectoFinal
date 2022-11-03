@@ -12,6 +12,7 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>desktopDashboards:embeddedDashboard</componentName>
+                <identifier>sfdxHardisId52</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>

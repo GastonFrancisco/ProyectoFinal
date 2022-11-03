@@ -600,6 +600,7 @@
             <targetReference>UpdateProjectResourceRecord</targetReference>
         </connector>
         <fields>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
             <name>Copy_1_of_Update_Record_Section1</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
@@ -815,6 +816,7 @@
             <targetReference>Assign_Dates_to_Resource</targetReference>
         </connector>
         <fields>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
             <name>Update_Record_Section1</name>
             <fieldType>RegionContainer</fieldType>
             <fields>

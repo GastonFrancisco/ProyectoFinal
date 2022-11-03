@@ -504,6 +504,7 @@
             <targetReference>Get_Vacations</targetReference>
         </connector>
         <fields>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
             <name>Out_of_Office_Request_Section1</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
@@ -577,6 +578,7 @@
             <isRequired>false</isRequired>
         </fields>
         <fields>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
             <name>Out_of_Office_Request_Section2</name>
             <fieldType>RegionContainer</fieldType>
             <fields>

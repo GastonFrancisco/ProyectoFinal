@@ -313,6 +313,7 @@
         <fields>
             <name>Assign_a_Task_Section1</name>
             <fieldType>RegionContainer</fieldType>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
             <fields>
                 <name>Assign_a_Task_Section1_Column1</name>
                 <fieldType>Region</fieldType>
