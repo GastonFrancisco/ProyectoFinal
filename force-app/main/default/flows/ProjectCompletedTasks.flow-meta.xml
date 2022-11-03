@@ -17,6 +17,7 @@
             <targetReference>ResourceTasksLoop</targetReference>
         </connector>
     </assignments>
+    <environments>Default</environments>
     <interviewLabel>ProjectCompletedTasks {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ProjectCompletedTasks</label>
     <loops>
