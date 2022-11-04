@@ -1,15 +1,14 @@
 public with sharing class GetRolesWithUsers {
     @AuraEnabled
     public static void metodoX ( Id projectId , string resourcesMap  ) {
-    system.debug(resourcesMap + ' ' + projectId );
-    Map<Id,list<date>> resourcebymap = (Map<Id, list<date>>)JSON.deserializeStrict( resourcesMap, Map<Id, list<date>>.class);
-     Project__c proyect =[SELECT name,(SELECT Role__c,Id FROM ProjecstLineItem__r WHERE Project__c =: projectId) FROM Project__c
-      WHERE Id =: projectId];
-    
-     map<string,id> RolbyPliId =new map<string,id>();
-         for(ProjectLineItem__c PLI : proyect.ProjecstLineItem__r){
-             RolbyPliId.put(PLI.Role__c, PLI.Id);
-         }
+        system.debug(resourcesMap + ' ' + projectId );
+        Map<Id,list<date>> resourcebymap = (Map<Id, list<date>>)JSON.deserializeStrict( resourcesMap, Map<Id, list<date>>.class);
+        Project__c proyect =[SELECT name,(SELECT Role__c,Id FROM ProjecstLineItem__r WHERE Project__c =: projectId) FROM Project__c WHERE Id =: projectId];
+        
+        map<string,id> RolbyPliId =new map<string,id>();
+        for(ProjectLineItem__c PLI : proyect.ProjecstLineItem__r){
+            RolbyPliId.put(PLI.Role__c, PLI.Id);
+        }
  
     
      list<user> ListResource=[SELECT Role__c,Name FROM user WHERE Id in: resourcebymap.keySet()];
@@ -30,7 +29,7 @@ public with sharing class GetRolesWithUsers {
          system.debug('list ' + listProyectResource );
          insert listProyectResource;
          
-     }
+    }
 
     public class ProjectWrapper{
         @AuraEnabled
@@ -71,9 +70,10 @@ public with sharing class GetRolesWithUsers {
         Date startDate = project.StartDate__c;
         Date endDate = project.EndDate__c;
 
-        List<User> usersListByRole = [SELECT Id, Name, Role__c, Rateph__c, (SELECT StartDate__c, EndDate__c, ProjectLineItem__r.Project__c FROM Project_Resources__r WHERE (StartDate__c >=:startDate AND StartDate__c <=: endDate) OR (EndDate__c >=:startDate AND EndDate__c <=: endDate )) FROM User WHERE Role__c IN: roles];
+        List<User> usersListByRole = [SELECT Id, Name, Role__c, Rateph__c, (SELECT StartDate__c, EndDate__c, ProjectLineItem__r.Project__c FROM Project_Resources__r WHERE (StartDate__c >=:startDate AND StartDate__c <=: endDate) OR (EndDate__c >=:startDate AND EndDate__c <=: endDate ) ORDER BY StartDate__c ASC) FROM User WHERE Role__c IN: roles];
 
         Map<String, List<User>> resourcesByRole = new Map<String, List<User>>();
+        Map<Id, String> roleByUser = new Map<Id, String>();
 
         for(User resource: usersListByRole){
             if(resource.Project_Resources__r.size() == 0){
@@ -84,11 +84,14 @@ public with sharing class GetRolesWithUsers {
                 }
             }
             if(resource.Project_Resources__r.size() == 1){
-                if(startDate.daysBetween(resource.Project_Resources__r[0].StartDate__c) >= 1 || resource.Project_Resources__r[0].EndDate__c.daysBetween(endDate) >= 1){
-                    if(resourcesByRole.containsKey(resource.Role__c)){
-                        resourcesByRole.get(resource.Role__c).add(resource);
-                    } else{
-                        resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                if((startDate < resource.Project_Resources__r[0].StartDate__c && startDate.daysBetween(resource.Project_Resources__r[0].StartDate__c) >= 1) || (resource.Project_Resources__r[0].EndDate__c < endDate && resource.Project_Resources__r[0].EndDate__c.daysBetween(endDate) >= 1)){
+                    if(!roleByUser.containsKey(resource.Id)){
+                        roleByUser.put(resource.Id, resource.Role__c);
+                        if(resourcesByRole.containsKey(resource.Role__c)){
+                            resourcesByRole.get(resource.Role__c).add(resource);
+                        } else{
+                            resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                        }
                     }
                 }
             } else{
@@ -99,12 +102,15 @@ public with sharing class GetRolesWithUsers {
                     Date iterationStartDate = proResource.StartDate__c;
                     Date iterationEndDate = proResource.EndDate__c;
 
-                    if(currentIterationIndex == 0 && startDate.daysBetween(iterationStartDate) > 1){
+                    if(currentIterationIndex == 0 && (startDate < iterationStartDate && startDate.daysBetween(iterationStartDate) > 1)){
                         if(getWeekDays(startDate, iterationStartDate) >= 1){
-                            if(resourcesByRole.containsKey(resource.Role__c)){
-                                resourcesByRole.get(resource.Role__c).add(resource);
-                            } else{
-                                resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                            if(!roleByUser.containsKey(resource.Id)){
+                                roleByUser.put(resource.Id, resource.Role__c);
+                                if(resourcesByRole.containsKey(resource.Role__c)){
+                                    resourcesByRole.get(resource.Role__c).add(resource);
+                                } else{
+                                    resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                                }
                             }
                         }
                     } else if(currentIterationIndex != 0 && (currentIterationIndex + 1) != resource.Project_Resources__r.size()){
@@ -113,12 +119,15 @@ public with sharing class GetRolesWithUsers {
 
                         Date previousIterationEndDate = resource.Project_Resources__r[previousIterationIndex].EndDate__c;
 
-                        if(previousIterationEndDate.daysBetween(iterationStartDate) > 1){
+                        if((previousIterationEndDate < iterationStartDate) && previousIterationEndDate.daysBetween(iterationStartDate) > 1){
                             if((getWeekDays(previousIterationEndDate, iterationStartDate) - 1) >= 1){
-                                if(resourcesByRole.containsKey(resource.Role__c)){
-                                    resourcesByRole.get(resource.Role__c).add(resource);
-                                } else{
-                                    resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                                if(!roleByUser.containsKey(resource.Id)){
+                                    roleByUser.put(resource.Id, resource.Role__c);
+                                    if(resourcesByRole.containsKey(resource.Role__c)){
+                                        resourcesByRole.get(resource.Role__c).add(resource);
+                                    } else{
+                                        resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                                    }
                                 }
                             }
                         }
@@ -128,12 +137,15 @@ public with sharing class GetRolesWithUsers {
 
                         Date previousIterationEndDate = resource.Project_Resources__r[previousIterationIndex].EndDate__c;
 
-                        if(previousIterationEndDate.daysBetween(iterationStartDate) > 1 || iterationEndDate.daysBetween(endDate) > 1){
+                        if((previousIterationEndDate < iterationStartDate && previousIterationEndDate.daysBetween(iterationStartDate) > 1) || (iterationEndDate < endDate &&iterationEndDate.daysBetween(endDate) > 1)){
                             if((getWeekDays(previousIterationEndDate, iterationStartDate) - 1) >= 1 ||getWeekDays(iterationEndDate, endDate) >= 1){
-                                if(resourcesByRole.containsKey(resource.Role__c)){
-                                    resourcesByRole.get(resource.Role__c).add(resource);
-                                } else{
-                                    resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                                if(!roleByUser.containsKey(resource.Id)){
+                                    roleByUser.put(resource.Id, resource.Role__c);
+                                    if(resourcesByRole.containsKey(resource.Role__c)){
+                                        resourcesByRole.get(resource.Role__c).add(resource);
+                                    } else{
+                                        resourcesByRole.put(resource.Role__c, new List<User>{resource});
+                                    }
                                 }
                             }
                         }

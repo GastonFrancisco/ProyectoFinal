@@ -16,6 +16,7 @@ export default class Allocateresource extends LightningElement {
     @wire(getProjectWrapper, { projectId: '$recordId' })
     trail(result) {
         this.info = result;
+        console.log(this.info)
         const { data, error } = result;
         if (data) {
             this.roles = [];
@@ -63,6 +64,7 @@ export default class Allocateresource extends LightningElement {
                 }));
             this.roles = [];
             this.resourcesValues = {}
+            console.log(this.resourcesValues);
             refreshApex(this.info)
         })
         .catch((error) => {
@@ -70,7 +72,7 @@ export default class Allocateresource extends LightningElement {
             console.log(error);
             this.dispatchEvent(new ShowToastEvent({
                 title: 'Error',
-                message: error.message,
+                message: error,
                 variant: 'error'
             }));
         })
